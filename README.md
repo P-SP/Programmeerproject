@@ -39,4 +39,4 @@ De API's en waarschijnlijk een database voor de Events pagina.
 Bijvoorbeeld de Center Parcs app. Zij hebben ook een plattegrond en een activiteiten lijst. Maar pagina's zoals Events en Ideeën ontbreken. Wel gebruikers reserveren, maar dat is in dit geval niet nodig.
 
 ### Obstakels
-Voor de Events pagina is lastig te implementeren. Ook de design van deze pagina wordt een uitdaging.
+Voor de Events pagina is lastig te implementeren. Ook de design van de pagina wordt een uitdaging.
