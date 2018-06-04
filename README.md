@@ -9,6 +9,7 @@ Hieronder zijn de schetsen voor de verschillende pagina's van de app weergeven.
 ![Alternative Text](doc/Home.png)
 ![Alternative Text](doc/Events.png)
 Informatie bij Events pagina: klik op meer informatie --> nieuw scherm opent/klik op volledig programma --> doorverwijzen naar programma pagina. 
+
 ![Alternative Text](doc/Weer.png)
 ![Alternative Text](doc/News.png)
 ![Alternative Text](doc/Activiteiten.png)
