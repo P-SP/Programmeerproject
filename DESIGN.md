@@ -6,7 +6,8 @@ De schetsen zijn te vinden het [pdf documentje](Advanced_sketches.pdf). De deeld
 ![Alternative Text](doc/Diagram.png)
 
 ### APIs
-- Weer API: http://weerlive.nl/delen.php --> je kunt een gratis API Key aanvragen. Kunt locatie meegeven (coördinaten in mijn geval: 51.4487992,5.962511899999981). Output is een json met o.a. de gemiddelde temperatuur, een afbeelding, voorspelling van vandaag en van morgen.
+- Weer API: http://weerlive.nl/delen.php
+Je kunt een gratis API Key aanvragen, maar je moet Weerlive.nl duidelijke credits geven. De locatie kan meegeven worden (coördinaten in mijn geval: 51.4487992,5.962511899999981). Output is een json met o.a. de gemiddelde temperatuur, een afbeelding, voorspelling van vandaag en van morgen. De afbeeldingen dienen wel apart gedownload te worden. 
 - Facebook API of webviewer --> waarschijnlijk ga ik de webviewer gebruiken, omdat je toestemming nodig lijkt te hebben voor de API. 
 
 ### Data
