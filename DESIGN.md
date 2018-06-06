@@ -1,7 +1,7 @@
 # Design
 ### Geavanceerde schetsen
 De schetsen zijn te vinden het pdf documentje. De deeldiagrammen van de modules, classes en functions zijn ook daarin te vinden.
-[Alternative Text](Advanced sketches.pdf)
+![Alternative Text](Advanced sketches.pdf)
 
 ### Diagram --> ook home act
 ![Alternative Text](doc/Diagram.png)
