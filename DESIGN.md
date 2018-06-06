@@ -1,13 +1,14 @@
 # Design
 ### Geavanceerde schetsen
 De schetsen zijn te vinden het pdf documentje. De deeldiagrammen van de modules, classes en functions zijn ook daarin te vinden.
+[Alternative Text](Advanced sketches.pdf)
 
-### Diagram
+### Diagram --> ook home act
 ![Alternative Text](doc/Diagram.png)
 
 ### APIs
-- Weer API: http://weerlive.nl/delen.php
-- Facebook API of webviewer
+- Weer API: http://weerlive.nl/delen.php --> je kunt een gratis API Key aanvragen. Kunt locatie meegeven (coördinaten in mijn geval: 51.4487992,5.962511899999981). Output is een json met o.a. de gemiddelde temperatuur, een afbeelding, voorspelling van vandaag en van morgen.
+- Facebook API of webviewer --> waarschijnlijk ga ik de webviewer gebruiken, omdat je toestemming nodig lijkt te hebben voor de API. 
 
 ### Data
 De data komt van www.bollywoodweekender.nl. Hier staat het programma en informatie over de verschillende artiesten/workshops.
