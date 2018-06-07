@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home" android:title="Home"></item>
+    <item android:id="@+id/eventsLoc" android:title="Events en locatie"></item>
+    <item android:id="@+id/weather" android:title="Weer"></item>
+    <item android:id="@+id/news" android:title="News"></item>
+    <item android:id="@+id/activities" android:title="Activiteiten"></item>
+    <item android:id="@+id/program" android:title="Programma"></item>
+    <item android:id="@+id/map" android:title="Plattegrond"></item>
+    <item android:id="@+id/idea" android:title="Ideeën"></item>
+</menu>
