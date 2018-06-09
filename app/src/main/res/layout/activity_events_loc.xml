@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context="com.example.eigenaar.bollywoodweekender.EventsLocActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/stage2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="20dp"
+            android:onClick="showAct"
+            app:srcCompat="@drawable/podium2" />
+
+        <ImageButton
+            android:id="@+id/stage3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:onClick="showAct"
+            app:srcCompat="@drawable/podium3" />
+
+        <ImageButton
+            android:id="@+id/stage1"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="250dp"
+            android:onClick="showAct"
+            app:srcCompat="@drawable/podium1" />
+
+    </FrameLayout>
+</LinearLayout>
