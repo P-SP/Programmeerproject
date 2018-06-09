@@ -11,3 +11,15 @@ Alle activities gemaakt. Menu werkt, maar 1 item mist. Waar het aan ligt weet ik
 Problemen die opgelost moeten worden:
 - Koppeling Github en Android Studio
 - Menu
+
+## Dag 5
+Geprobeerd bovenstaande problemen op te lossen, maar niet gelukt. Wel gevonden wat ik fout heb gedaan met Github koppeling, dus dat los ik morgen op. Presentatie gehouden.
+
+## Dag 6
+Menu en Github probleem opgelost. 
+
+Wat nu gedaan moet worden:
+- niet steeds een nieuwe pagina openen als je navigeert met menu
+- interactieve plattegrond mooi maken met material design
+- data in het juiste format krijgen en dus events pagina maken
+- alle andere pagina's natuurlijk maken
