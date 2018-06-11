@@ -26,3 +26,5 @@ Wat nu gedaan moet worden:
 
 ## Dag 7
 Informatie gezocht over material design. Morgen verder en interactieve plattegrond maken.
+
+## Dag 8 (maandag 11-6-2018)
