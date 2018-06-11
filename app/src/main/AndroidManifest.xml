@@ -26,5 +26,4 @@
         <activity android:name=".IdeaActivity"/>
         <activity android:name=".Popup"/>
     </application>
-
 </manifest>

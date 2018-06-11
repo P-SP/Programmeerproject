@@ -7,37 +7,259 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 tools:context="com.example.eigenaar.bollywoodweekender.EventsLocActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/stage2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="20dp"
-            android:onClick="showAct"
-            app:srcCompat="@drawable/podium2" />
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="105dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Market Dome"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/stage3"
-            android:layout_width="120dp"
+        <TextView
+            android:id="@+id/info2"
+            android:layout_width="105dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            android:text="Klik op een locatie om te bekijken wat er nu gebeurt!"
+            app:layout_constraintStart_toStartOf="@+id/info"
+            app:layout_constraintTop_toTopOf="@+id/info" />
+
+        <ImageView
+            android:id="@+id/swimming_pool"
+            android:layout_width="148dp"
+            android:layout_height="73dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/zwembad" />
+
+        <ImageView
+            android:id="@+id/main_entrance"
+            android:layout_width="110dp"
+            android:layout_height="66dp"
+            android:layout_marginBottom="248dp"
+            android:layout_marginStart="304dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.96"
+            app:srcCompat="@drawable/hoofd_ingang" />
+
+        <ImageView
+            android:id="@+id/bios"
+            android:layout_width="134dp"
+            android:layout_height="101dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rest_left_under"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/bios" />
+
+        <TextView
+            android:id="@+id/text_bios"
+            android:layout_width="135dp"
+            android:layout_height="31dp"
+            android:layout_marginBottom="85dp"
+            android:background="#546E7A"
+            android:text="Films and more"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/bios"
+            app:layout_constraintStart_toStartOf="@+id/bios" />
+
+        <ImageView
+            android:id="@+id/rest_left_under"
+            android:layout_width="153dp"
+            android:layout_height="133dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/rest_grill"
+            app:layout_constraintTop_toBottomOf="@+id/rest_grill"
+            app:layout_constraintVertical_bias="0.42000002"
+            app:srcCompat="@drawable/rest3" />
+
+        <TextView
+            android:id="@+id/text_rest_1"
+            android:layout_width="143dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="25dp"
+            android:background="#78909C"
+            android:text="Restaurant 1"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/rest_left_under"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rest_grill"
+            app:layout_constraintVertical_bias="0.31" />
+
+        <ImageView
+            android:id="@+id/rest_grill"
+            android:layout_width="142dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39999998"
+            app:srcCompat="@drawable/rest2" />
+
+        <TextView
+            android:id="@+id/text_rest_grill"
+            android:layout_width="142dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#78909C"
+            android:text="Restaurant 2"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/rest_grill"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.68" />
+
+        <ImageView
+            android:id="@+id/rest_american"
+            android:layout_width="261dp"
+            android:layout_height="118dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rest_grill"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.29000002"
+            app:srcCompat="@drawable/rest1" />
+
+        <TextView
+            android:id="@+id/text_rest_armerican"
+            android:layout_width="114dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="300dp"
+            android:background="#78909C"
+            android:text="Restaurant 3"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rest_american" />
+
+        <ImageView
+            android:id="@+id/rest_grand_cafe"
+            android:layout_width="165dp"
+            android:layout_height="239dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/stage_centre"
+            app:layout_constraintTop_toTopOf="@+id/stage_right"
+            app:layout_constraintVertical_bias="0.76"
+            app:srcCompat="@drawable/grand_cafe" />
+
+        <TextView
+            android:id="@+id/text_rest_grand_cafe"
+            android:layout_width="123dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#78909C"
+            android:text="Grand Café"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/rest_grand_cafe"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.79" />
+
+        <ImageView
+            android:id="@+id/stage_centre"
+            android:layout_width="138dp"
+            android:layout_height="97dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.54"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stage_right"
+            app:layout_constraintVertical_bias="0.32999998"
+            app:srcCompat="@drawable/podium_midden" />
+
+        <TextView
+            android:id="@+id/text_state_centre"
+            android:layout_width="139dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="75dp"
+            android:background="#64B5F6"
+            android:text="Market Square Pordium #3"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/stage_centre"
+            app:layout_constraintTop_toTopOf="@+id/stage_centre" />
+
+        <ImageView
+            android:id="@+id/stage_right"
+            android:layout_width="152dp"
             android:layout_height="120dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="20dp"
-            android:onClick="showAct"
-            app:srcCompat="@drawable/podium3" />
-
-        <ImageButton
-            android:id="@+id/stage1"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="250dp"
-            android:onClick="showAct"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/stage_right"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.06999999"
             app:srcCompat="@drawable/podium1" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/text_stage_right"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:background="#64B5F6"
+            android:text="Business Center Podium #1"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/stage_right"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/stage_right"
+            android:layout_width="136dp"
+            android:layout_height="161dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/podium2" />
+
+        <TextView
+            android:id="@+id/text_stage_left"
+            android:layout_width="136dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="135dp"
+            android:background="#64B5F6"
+            android:text="Dance Venue     Podium #2"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/stage_right"
+            app:layout_constraintTop_toTopOf="@+id/stage_right" />
+
+    </android.support.constraint.ConstraintLayout>
 </LinearLayout>
