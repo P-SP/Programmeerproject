@@ -23,3 +23,6 @@ Wat nu gedaan moet worden:
 - interactieve plattegrond mooi maken met material design
 - data in het juiste format krijgen en dus events pagina maken
 - alle andere pagina's natuurlijk maken
+
+## Dag 7
+Informatie gezocht over material design. Morgen verder en interactieve plattegrond maken.
