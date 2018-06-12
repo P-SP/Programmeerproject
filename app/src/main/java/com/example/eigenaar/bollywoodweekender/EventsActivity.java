@@ -16,8 +16,7 @@ public class EventsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // hoort activity_events te zijn
-        setContentView(R.layout.activity_events_loc_2);
+        setContentView(R.layout.activity_events);
     }
 
     @Override
