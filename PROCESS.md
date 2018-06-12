@@ -28,3 +28,4 @@ Wat nu gedaan moet worden:
 Informatie gezocht over material design. Morgen verder en interactieve plattegrond maken.
 
 ## Dag 8 (maandag 11-6-2018)
+Twee versies voor interactieve plattegrond gemaakt, maar ik weet niet wat duidelijk is. Heb ook een andere menu versie geprobeerd, maar het werkte niet anders. Zoek eigenlijk iets waardoor je de code niet steeds hoeft te herhalen.
