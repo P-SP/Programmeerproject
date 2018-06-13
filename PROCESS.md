@@ -38,3 +38,6 @@ Wat nu gedaan moet worden:
 - data in het juiste format krijgen en dus events pagina maken
 - alle andere pagina's natuurlijk maken
 - DialogFragment of AlertDialog gebruiken voor pop up, maar eerst data inladen
+
+## Dag 10
+Gridview events werkt, kan event pagina openen, adapter werkt. JSON file aan het inladen met data en vervolgens omzetten in list met events voor gridview adapter. Maar JSON wil nog niet werken. Er gaat iets fout met het ophalen van JSON file uit assets. Als het werkt dan nog alle informatie erin zetten.
