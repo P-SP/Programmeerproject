@@ -5,17 +5,38 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Created by Eigenaar on 7-6-2018.
  */
 
 public class EventActivity extends AppCompatActivity {
+    Event retrievedEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+
+        // get info from main activity
+        Intent intent = getIntent();
+        retrievedEvent = (Event) intent.getSerializableExtra("clicked_event");
+
+        // get places
+        ImageView photo = findViewById(R.id.picture);
+        TextView name = findViewById(R.id.nameView);
+        TextView time = findViewById(R.id.timeView);
+        TextView location = findViewById(R.id.locationView);
+        TextView info = findViewById(R.id.infoView);
+
+        // put the right values in it
+        photo.setImageDrawable(getDrawable(retrievedEvent.getDrawableID()));
+        name.setText(retrievedEvent.getName());
+        time.setText(retrievedEvent.getTime());
+        location.setText(retrievedEvent.getLocation());
+        info.setText(retrievedEvent.getInfo());
     }
 
     @Override
