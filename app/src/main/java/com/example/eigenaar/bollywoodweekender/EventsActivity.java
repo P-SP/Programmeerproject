@@ -52,7 +52,7 @@ public class EventsActivity extends AppCompatActivity {
         String json = null;
 
         try {
-            InputStream input = getActivity().getAssets().open("events.json");
+            InputStream input = getApplicationContext().getResources().openRawResource(R.raw.events_sun_g);
             int size = input.available();
             byte[] buffer = new byte[size];
             input.read(buffer);
@@ -61,6 +61,7 @@ public class EventsActivity extends AppCompatActivity {
         } catch (IOException exception) {
 
             // VERANDER NAAR MESSAGE VOOR USER
+            Log.d("json", exception.getMessage());
             exception.printStackTrace();
             return null;
         }
@@ -73,7 +74,6 @@ public class EventsActivity extends AppCompatActivity {
 
         try {
             JSONArray array = new JSONArray(eventsJSON);
-
             Event event;
 
             for (int i = 0; i < array.length(); i++) {

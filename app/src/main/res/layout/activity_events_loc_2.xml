@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toStartOf="@+id/bios"
         app:layout_constraintStart_toEndOf="@+id/game"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/binnen_zwembad" />
+        app:srcCompat="@drawable/aqua_fit" />
 
     <ImageView
         android:id="@+id/rest_3"

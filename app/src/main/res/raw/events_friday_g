@@ -1,0 +1,138 @@
+[
+  {
+    "name":"DJ SA HEAT",
+    "day":"Vrijdag 29 juni",
+    "time":"19.00 - 21.00 uur",
+    "location":"Business Center - Podium #1",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"saheat"
+  },
+  {
+    "name":"BEATMACHINE",
+    "day":"Vrijdag 29 juni",
+    "time":"21.00 - 00.00 uur",
+    "location":"Business Center - Podium #1",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"beat_machine"
+  },
+  {
+    "name":"DJ ZUNILS",
+    "day":"Vrijdag 29 juni",
+    "time":"00.00 - 01.00 uur",
+    "location":"Business Center - Podium #1",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"zunils"
+  },
+  {
+    "name":"THE BAND",
+    "day":"Vrijdag 29 juni",
+    "time":"01.00 - 03.00 uur",
+    "location":"Business Center - Podium #1",
+    "info":"... Latin caribean night",
+    "image_name":"the_band"
+  },
+  {
+    "name":"DJ BURNOUT",
+    "day":"Vrijdag 29 juni",
+    "time":"18.30 - 21.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"burnout"
+  },
+  {
+    "name":"SCREAM",
+    "day":"Vrijdag 29 juni",
+    "time":"21.00 - 00.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":".... featuring Indroniel ...",
+    "image_name":"scream"
+  },
+  {
+    "name":"DJ SA HEAT",
+    "day":"Vrijdag 29 juni",
+    "time":"00.00 - 01.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"saheat"
+  },
+  {
+    "name":"THE INDIAN EAGLES",
+    "day":"Vrijdag 29 juni",
+    "time":"01.00 - 03.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"indian_eagles"
+  },
+  {
+    "name":"KIDS DISCO",
+    "day":"Vrijdag 29 juni",
+    "time":"17.30 - 18.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"kids_disco"
+  },
+  {
+    "name":"DJ",
+    "day":"Vrijdag 29 juni",
+    "time":"18.00 - 21.30 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"dj"
+  },
+  {
+    "name":"DIAMONDS",
+    "day":"Vrijdag 29 juni",
+    "time":"21.30 - 23.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"diamonds"
+  },
+  {
+    "name":"DJ",
+    "day":"Vrijdag 29 juni",
+    "time":"23.00 - 00.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"dj"
+  },
+  {
+    "name":"DIAMONDS",
+    "day":"Vrijdag 29 juni",
+    "time":"00.00 - 02.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"diamonds"
+  },
+  {
+    "name":"DJ DOLLY",
+    "day":"Vrijdag 29 juni",
+    "time":"02.00 - 03.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"dolly"
+  },
+  {
+    "name":"KINDERSCHMINK",
+    "day":"Vrijdag 29 juni",
+    "time":"18.30 - 21.00 uur",
+    "location":"Market Dome",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"schmink"
+  },
+  {
+    "name":"BOLLYWOOD POOL PARTY",
+    "day":"Vrijdag 29 juni",
+    "time":"18.00 - 21.00 uur",
+    "location":"Aqua Mundo",
+    "info":"... surprise DJ",
+    "image_name":"pool_party"
+  },
+  {
+    "name":"BOLLYWOOD FILMS",
+    "day":"Vrijdag 29 juni",
+    "time":"19.00 - 02.00 uur",
+    "location":"Bolly Cinema",
+    "info":"... bollywood klassiekers",
+    "image_name":"bios"
+  }
+]
