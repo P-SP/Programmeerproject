@@ -41,3 +41,6 @@ Wat nu gedaan moet worden:
 
 ## Dag 10
 Gridview events werkt, kan event pagina openen, adapter werkt. JSON file aan het inladen met data en vervolgens omzetten in list met events voor gridview adapter. Maar JSON wil nog niet werken. Er gaat iets fout met het ophalen van JSON file uit assets. Als het werkt dan nog alle informatie erin zetten.
+
+## Dag 11
+Data zit erin, alleen extra informatie ontbreekt. Gridview kan alle data laden. Alleen nu staat het van 1 dag erin. Zet alle dagen erin. Of laat misschien filteren op dag. Koppeling met plattegrond wordt moeilijk (tijden en locatie moeten kloppen). Layout moet nog mooi gemaakt worden. Denk dat plaatjes veel kleiner moeten bij event pagina. Bij events pagina moeten de teksten niet afgebroken worden.
