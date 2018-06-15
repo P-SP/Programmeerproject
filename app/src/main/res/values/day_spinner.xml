@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="days_array">
+        <item>Vrijdag 29 juni</item>
+        <item>Zaterdag 30 juni</item>
+        <item>Zondag 1 juli</item>
+    </string-array>
+</resources>

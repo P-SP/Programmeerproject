@@ -8,7 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.Spinner;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
  * Created by Eigenaar on 9-6-2018.
  */
 
-public class EventsActivity extends AppCompatActivity {
+public class EventsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     ArrayList<Event> events = new ArrayList<>();
 
@@ -31,28 +33,50 @@ public class EventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
-        // instantiate and add all the events
+        // fill spinner dropdown
+        Spinner day_spinner = (Spinner) findViewById(R.id.spinner_day);
 
-        // read json file
-        events = parseJSONToEvent(loadJSONFromAsset());
+        // instantiate adapter
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.days_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        // apply the adapter to the spinner and start listening
+        day_spinner.setAdapter(adapter);
+        day_spinner.setOnItemSelectedListener(this);
+    }
+
+    // on click apinner
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         GridView eventsGrid = findViewById(R.id.gridviewEvents);
 
+        // read right json file
+        if (pos == 0) {
+            events = parseJSONToEvent(loadJSONFromAsset(R.raw.events_friday_g));
+        } else if (pos == 1) {
+            events = parseJSONToEvent(loadJSONFromAsset(R.raw.events_sat_g));
+        } else {
+            events = parseJSONToEvent(loadJSONFromAsset(R.raw.events_sun_g));
+        }
+
         // instantiate and attach adapter to GridView
-        EventsAdapter adapter = new EventsAdapter(this, R.layout.grid_event_item, events);
-        eventsGrid.setAdapter(adapter);
+        EventsAdapter a = new EventsAdapter(this, R.layout.grid_event_item, events);
+        eventsGrid.setAdapter(a);
 
         // connect listener to GridView
         eventsGrid.setOnItemClickListener(new GridItemClickListener());
+    }
 
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
     }
 
     // code van https://stackoverflow.com/questions/19945411/android-java-how-can-i-parse-a-local-json-file-from-assets-folder-into-a-listvi
-    public String loadJSONFromAsset() {
+    public String loadJSONFromAsset(int json_file) {
         String json = null;
 
         try {
-            InputStream input = getApplicationContext().getResources().openRawResource(R.raw.events_sun_g);
+            InputStream input = getApplicationContext().getResources().openRawResource(json_file);
             int size = input.available();
             byte[] buffer = new byte[size];
             input.read(buffer);

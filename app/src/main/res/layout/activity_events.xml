@@ -4,13 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
+    android:orientation="vertical"
     tools:context="com.example.eigenaar.bollywoodweekender.EventsLocActivity">
+
+    <Spinner
+        android:id="@+id/spinner_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
 
     <GridView
         android:id="@+id/gridviewEvents"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="75dp"
+        android:columnWidth="100dp"
         android:layout_gravity="center"
         android:horizontalSpacing="10dp"
         android:numColumns="auto_fit"
