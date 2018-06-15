@@ -44,3 +44,6 @@ Gridview events werkt, kan event pagina openen, adapter werkt. JSON file aan het
 
 ## Dag 11
 Data zit erin, alleen extra informatie ontbreekt. Gridview kan alle data laden. Alleen nu staat het van 1 dag erin. Zet alle dagen erin. Of laat misschien filteren op dag. Koppeling met plattegrond wordt moeilijk (tijden en locatie moeten kloppen). Layout moet nog mooi gemaakt worden. Denk dat plaatjes veel kleiner moeten bij event pagina. Bij events pagina moeten de teksten niet afgebroken worden.
+
+## Dag 12
+Presentatie gegeven, idee: gebruik date object om tijden te vergelijken. Verder gewerkt aan events pagina. Je kunt nu een dag selecteren. Zelfde event kan er vaker staan als het vaker op een dag is. Maar dan heb je tenminste de tijden. Misschien moet dit toch nog veranderd worden. 
