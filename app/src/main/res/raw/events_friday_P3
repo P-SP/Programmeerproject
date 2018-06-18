@@ -1,0 +1,50 @@
+[
+  {
+    "name":"KIDS DISCO",
+    "day":"Vrijdag 29 juni",
+    "time":"17.30 - 18.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"kids_disco"
+  },
+  {
+    "name":"DJ",
+    "day":"Vrijdag 29 juni",
+    "time":"18.00 - 21.30 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"dj"
+  },
+  {
+    "name":"DIAMONDS",
+    "day":"Vrijdag 29 juni",
+    "time":"21.30 - 23.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"diamonds"
+  },
+  {
+    "name":"DJ",
+    "day":"Vrijdag 29 juni",
+    "time":"23.00 - 00.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"dj"
+  },
+  {
+    "name":"DIAMONDS",
+    "day":"Vrijdag 29 juni",
+    "time":"00.00 - 02.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"diamonds"
+  },
+  {
+    "name":"DJ DOLLY",
+    "day":"Vrijdag 29 juni",
+    "time":"02.00 - 03.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"dolly"
+  }
+]

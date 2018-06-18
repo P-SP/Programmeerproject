@@ -1,0 +1,34 @@
+[
+  {
+    "name":"DJ BURNOUT",
+    "day":"Vrijdag 29 juni",
+    "time":"18.30 - 21.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"burnout"
+  },
+  {
+    "name":"SCREAM",
+    "day":"Vrijdag 29 juni",
+    "time":"21.00 - 00.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":".... featuring Indroniel ...",
+    "image_name":"scream"
+  },
+  {
+    "name":"DJ SA HEAT",
+    "day":"Vrijdag 29 juni",
+    "time":"00.00 - 01.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"saheat"
+  },
+  {
+    "name":"THE INDIAN EAGLES",
+    "day":"Vrijdag 29 juni",
+    "time":"01.00 - 03.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"indian_eagles"
+  }
+]

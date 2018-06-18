@@ -1,0 +1,34 @@
+[
+  {
+    "name":"DJ SA HEAT",
+    "day":"Vrijdag 29 juni",
+    "time":"19.00 - 21.00 uur",
+    "location":"Business Center - Podium #1",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"saheat"
+  },
+  {
+    "name":"BEATMACHINE",
+    "day":"Vrijdag 29 juni",
+    "time":"21.00 - 00.00 uur",
+    "location":"Business Center - Podium #1",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"beat_machine"
+  },
+  {
+    "name":"DJ ZUNILS",
+    "day":"Vrijdag 29 juni",
+    "time":"00.00 - 01.00 uur",
+    "location":"Business Center - Podium #1",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"zunils"
+  },
+  {
+    "name":"THE BAND",
+    "day":"Vrijdag 29 juni",
+    "time":"01.00 - 03.00 uur",
+    "location":"Business Center - Podium #1",
+    "info":"... Latin caribean night",
+    "image_name":"the_band"
+  }
+]

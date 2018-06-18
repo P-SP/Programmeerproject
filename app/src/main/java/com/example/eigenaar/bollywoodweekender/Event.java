@@ -9,12 +9,13 @@ import java.io.Serializable;
 public class Event implements Serializable {
 
     // properties
-    private String name, time, info, location;
+    private String name, day, time, info, location;
     private int drawableID;
 
     // constructor
-    public Event(String aName, String aTime, String aLocation, String anInfo, int anId) {
+    public Event(String aName, String aDay, String aTime, String aLocation, String anInfo, int anId) {
         name = aName;
+        day = aDay;
         time = aTime;
         location = aLocation;
         info = anInfo;
@@ -23,6 +24,10 @@ public class Event implements Serializable {
     // getter functions
     public String getName() {
         return name;
+    }
+
+    public String getDay() {
+        return day;
     }
 
     public String getTime() {

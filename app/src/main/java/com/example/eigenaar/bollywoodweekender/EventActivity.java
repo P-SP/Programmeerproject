@@ -27,6 +27,7 @@ public class EventActivity extends AppCompatActivity {
         // get places
         ImageView photo = findViewById(R.id.picture);
         TextView name = findViewById(R.id.nameView);
+        TextView day = findViewById(R.id.dayView);
         TextView time = findViewById(R.id.timeView);
         TextView location = findViewById(R.id.locationView);
         TextView info = findViewById(R.id.infoView);
@@ -34,6 +35,7 @@ public class EventActivity extends AppCompatActivity {
         // put the right values in it
         photo.setImageDrawable(getDrawable(retrievedEvent.getDrawableID()));
         name.setText(retrievedEvent.getName());
+        day.setText(retrievedEvent.getDay());
         time.setText(retrievedEvent.getTime());
         location.setText(retrievedEvent.getLocation());
         info.setText(retrievedEvent.getInfo());

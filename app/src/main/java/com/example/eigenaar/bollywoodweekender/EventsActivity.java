@@ -104,13 +104,14 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
                 JSONObject jo_inside = array.getJSONObject(i);
                 Log.d("Details-->", jo_inside.getString("name"));
                 String name = jo_inside.getString("name");
+                String day = jo_inside.getString("day");
                 String time = jo_inside.getString("time");
                 String location = jo_inside.getString("location");
                 String info = jo_inside.getString("info");
                 String image = jo_inside.getString("image_name");
 
                 //Add your values in your `ArrayList` as below:
-                event = new Event(name, time, location, info, this.getResources().getIdentifier(
+                event = new Event(name, day, time, location, info, this.getResources().getIdentifier(
                         image, "drawable", getPackageName()));
 
                 events.add(event);
@@ -185,6 +186,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
         return super.onOptionsItemSelected(item);
     }
 
+    // VOLGENS MIJ KAN DIT WEG
     public void showAct(View v) {
         // go to next activity
         Intent intent = new Intent(this, EventActivity.class);

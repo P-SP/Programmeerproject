@@ -18,7 +18,27 @@
         app:srcCompat="@drawable/map" />
 
     <ImageView
+        android:id="@+id/terrace"
+        android:layout_width="49dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.31"
+        app:srcCompat="@drawable/terrace_icon"
+        android:clickable="true"
+        android:onClick="showAct" />
+
+    <ImageView
         android:id="@+id/bios"
+        android:tag="Bios"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -81,16 +101,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:onClick="showAct"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintHorizontal_bias="0.408"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224"
-        app:srcCompat="@drawable/game_icon"
-        android:clickable="true"
-        android:onClick="showAct" />
+        app:layout_constraintVertical_bias="0.191"
+        app:srcCompat="@drawable/game_icon" />
 
     <ImageView
         android:id="@+id/rest_1"
