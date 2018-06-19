@@ -49,7 +49,18 @@ Data zit erin, alleen extra informatie ontbreekt. Gridview kan alle data laden. 
 Presentatie gegeven, idee: gebruik date object om tijden te vergelijken. Verder gewerkt aan events pagina. Je kunt nu een dag selecteren. Zelfde event kan er vaker staan als het vaker op een dag is. Maar dan heb je tenminste de tijden. Misschien moet dit toch nog veranderd worden. 
 
 ## Dag 13 (maandag 18-6-2018)
-In het weekend nauwelijks iets kunnen doen, omdat ik ziek was. Vandaag wil ik:
-- link events pagina en interactieve plattegrond werkend (met pop up en al)
+In het weekend nauwelijks iets kunnen doen, omdat ik ziek was. Vandaag gedaan:
+- dag toevoegen als key
+- market dome toevoegen als locatie
+- JSON files aanpassen
+- pop up werkt en is al redelijk mooi
+- link events pagina en interactieve plattegrond werkend werkt nog niet, moet nog juiste event vinden
+
+Morgen doen:
+- koppeling interactieve plattegrond en event afmaken
 - API weer inladen
 - Facebook pagina openen moet kunnen
+- Github pagina op juiste manier indelen (android studio project nog een keer koppelen)
+
+## Dag 14
+Koppeling met interactieve plattegrond werkt. Duurde langer dan verwacht. Pop up kan goed doorverwijzen naar event pagina en naar programma pagina. Facebook pagina wordt goed geopend. Voor de weer API heb je een account nodig, maar ik kan geen accound aanmaken. Dus ik zoek nu een andere API. Morgen moet API werken.
