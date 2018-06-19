@@ -1,0 +1,58 @@
+[
+  {
+    "name":"KARAOKE EN QUIZ",
+    "day":"Zaterdag 30 juni",
+    "time":"15.30 - 18.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"... ",
+    "image_name":"karaoke"
+  },
+  {
+    "name":"EAGLE MUSICIANS",
+    "day":"Zaterdag 30 juni",
+    "time":"18.00 - 19.30 uur",
+    "location":"Market Square - Podium #3",
+    "info":"... ",
+    "image_name":"eagle_musicians"
+  },
+  {
+    "name":"SHAHEED WAGIED HOUSAIN TRIBUTE",
+    "day":"Zaterdag 30 juni",
+    "time":"19.30 - 20.30 uur",
+    "location":"Market Square - Podium #3",
+    "info":"... ",
+    "image_name":"saheed"
+  },
+  {
+    "name":"EAGLE MUSICIANS",
+    "day":"Zaterdag 30 juni",
+    "time":"20.30 - 22.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"... ",
+    "image_name":"eagle_musicians"
+  },
+  {
+    "name":"AVISHKAR",
+    "day":"Zaterdag 30 juni",
+    "time":"22.00 - 00.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"... ",
+    "image_name":"avishkar"
+  },
+  {
+    "name":"DJ MIKE MOTION",
+    "day":"Zaterdag 30 juni",
+    "time":"00.00 - 01.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":"... ",
+    "image_name":"mike_motion"
+  },
+  {
+    "name":"AVISHKAR",
+    "day":"Zaterdag 30 juni",
+    "time":"01.00 - 02.30 uur",
+    "location":"Market Square - Podium #3",
+    "info":"... ",
+    "image_name":"avishkar"
+  }
+]

@@ -102,7 +102,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
 
             for (int i = 0; i < array.length(); i++) {
                 JSONObject jo_inside = array.getJSONObject(i);
-                Log.d("Details-->", jo_inside.getString("name"));
+
                 String name = jo_inside.getString("name");
                 String day = jo_inside.getString("day");
                 String time = jo_inside.getString("time");

@@ -1,0 +1,26 @@
+[
+  {
+    "name":"BABYZWEMMEN",
+    "day":"Zondag 1 juli",
+    "time":"11.30 - 12.00 uur",
+    "location":"Aqua Mundo",
+    "info":"... ",
+    "image_name":"babyzwemmen"
+  },
+  {
+    "name":"AQUA FIT",
+    "day":"Zondag 1 juli",
+    "time":"12.00 - 12.30 uur",
+    "location":"Aqua Mundo",
+    "info":"... ",
+    "image_name":"aqua_fit"
+  },
+  {
+    "name":"BOLLYWOOD POOL PARTY FT. DJ SA HEAT",
+    "day":"Zondag 1 juli",
+    "time":"16.00 - 21.00 uur",
+    "location":"Aqua Mundo",
+    "info":"... ",
+    "image_name":"pool_party"
+  }
+]

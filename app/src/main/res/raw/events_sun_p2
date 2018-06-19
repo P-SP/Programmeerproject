@@ -1,0 +1,58 @@
+[
+  {
+    "name":"KIZOMBA COURSE",
+    "day":"Zondag 1 juli",
+    "time":"14.00 - 15.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":".... ",
+    "image_name":"salsa"
+  },
+  {
+    "name":"LONDA KE NAACH AND BAITHAK DANCE CLINIC",
+    "day":"Zondag 1 juli",
+    "time":"15.00 - 15.30 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":".... ",
+    "image_name":"londa_ke_naach"
+  },
+  {
+    "name":"THE BAND",
+    "day":"Zondag 1 juli",
+    "time":"15.30 - 17.30 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":".... Chutney Baithak",
+    "image_name":"the_band"
+  },
+  {
+    "name":"DJ SA HEAT",
+    "day":"Zondag 1 juli",
+    "time":"17.30 - 18.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":".... ",
+    "image_name":"saheat"
+  },
+  {
+    "name":"X-TATIK",
+    "day":"Zondag 1 juli",
+    "time":"18.00 - 18.30 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":".... JENNA AND ANUPA",
+    "image_name":"x_tatik"
+  },
+  {
+    "name":"NEXT TIME",
+    "day":"Zondag 1 juli",
+    "time":"18.30 - 21.30 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":".... ",
+    "image_name":"next_time"
+  },
+  {
+    "name":"DJ AFTER-AFTERPARTY",
+    "day":"Zondag 1 juli",
+    "time":"21.30 - 22.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":".... bollywood finals",
+    "image_name":"dj"
+  }
+]

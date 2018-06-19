@@ -1,0 +1,34 @@
+[
+  {
+    "name":"ASHIQ BROTHERS",
+    "day":"Zondag 1 juli",
+    "time":"14.00 - 15.30 uur",
+    "location":"Market Square - Podium #3",
+    "info":".... qawali, geet and ghazals",
+    "image_name":"ashiq"
+  },
+  {
+    "name":"BOLLYWOOD KARAOKE AND QUIZ",
+    "day":"Zondag 1 juli",
+    "time":"15.30 - 16.30 uur",
+    "location":"Market Square - Podium #3",
+    "info":".... ",
+    "image_name":"karaoke"
+  },
+  {
+    "name":"ASHIQ BROTHERS",
+    "day":"Zondag 1 juli",
+    "time":"16.30 - 18.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":".... film songs",
+    "image_name":"ashiq"
+  },
+  {
+    "name":"SWAREED",
+    "day":"Zondag 1 juli",
+    "time":"18.00 - 21.00 uur",
+    "location":"Market Square - Podium #3",
+    "info":".... ",
+    "image_name":"swareed"
+  }
+]

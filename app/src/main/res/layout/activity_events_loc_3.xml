@@ -19,6 +19,7 @@
 
     <ImageView
         android:id="@+id/terrace"
+        android:tag="Market Dome"
         android:layout_width="49dp"
         android:layout_height="39dp"
         android:layout_marginBottom="8dp"
@@ -58,6 +59,7 @@
 
     <ImageView
         android:id="@+id/bowling"
+        android:tag="Bowling"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -76,6 +78,7 @@
 
     <ImageView
         android:id="@+id/casino"
+        android:tag="Casino"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -95,6 +98,7 @@
 
     <ImageView
         android:id="@+id/games"
+        android:tag="Games"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -114,6 +118,7 @@
 
     <ImageView
         android:id="@+id/rest_1"
+        android:tag="Restaurant"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -133,6 +138,7 @@
 
     <ImageView
         android:id="@+id/rest_grill"
+        android:tag="Restaurant Grill"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -152,6 +158,7 @@
 
     <ImageView
         android:id="@+id/rest_american"
+        android:tag="Restaurant American"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -171,6 +178,7 @@
 
     <ImageView
         android:id="@+id/rest_grand_cafe"
+        android:tag="Grand Café"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -188,7 +196,8 @@
         android:onClick="showAct" />
 
     <ImageView
-        android:id="@+id/stage_dome"
+        android:id="@+id/stage_business"
+        android:tag="Business Center - Podium #1"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -207,7 +216,8 @@
         android:onClick="showAct" />
 
     <ImageView
-        android:id="@+id/stage_business"
+        android:id="@+id/stage_dome"
+        android:tag="Market Square - Podium #3"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -227,6 +237,7 @@
 
     <ImageView
         android:id="@+id/stage_dance"
+        android:tag="Dance Venue - Podium #2"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -246,6 +257,7 @@
 
     <ImageView
         android:id="@+id/swimming"
+        android:tag="Zwembad"
         android:layout_width="55dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"

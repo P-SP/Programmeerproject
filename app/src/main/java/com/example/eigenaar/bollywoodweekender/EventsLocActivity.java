@@ -29,6 +29,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.StringTokenizer;
 import java.util.TimeZone;
 
 public class EventsLocActivity extends AppCompatActivity {
@@ -105,41 +106,49 @@ public class EventsLocActivity extends AppCompatActivity {
             // go to next activity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
         if(item.getItemId()== R.id.eventsLoc){
             // go to next activity
             Intent intent = new Intent(this, EventsLocActivity.class);
             startActivity(intent);
+            finish();
         }
         if(item.getItemId()== R.id.weather){
             // go to next activity
             Intent intent = new Intent(this, WeatherActivity.class);
             startActivity(intent);
+            finish();
         }
         if(item.getItemId()== R.id.news){
             // go to next activity
             Intent intent = new Intent(this, NewsActivity.class);
             startActivity(intent);
+            finish();
         }
         if(item.getItemId()== R.id.activities){
             // go to next activity
             Intent intent = new Intent(this, EventsActivity.class);
             startActivity(intent);
+            finish();
         }
         if(item.getItemId()== R.id.program){
             // go to next activity
             Intent intent = new Intent(this, ProgrActivity.class);
             startActivity(intent);
+            finish();
         }
         if(item.getItemId()== R.id.map){
             // go to next activity
             Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
+            finish();
         }
         if(item.getItemId()== R.id.idea){
             // go to next activity
             Intent intent = new Intent(this, IdeaActivity.class);
             startActivity(intent);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -163,7 +172,7 @@ public class EventsLocActivity extends AppCompatActivity {
     }
 
     public AlertDialog popUp(View v) {
-        Event e = findCurrentEvent(v);
+        final Event e = findCurrentEvent(v);
 
         AlertDialog.Builder popUpBuilder = new AlertDialog.Builder(this);
 
@@ -184,23 +193,40 @@ public class EventsLocActivity extends AppCompatActivity {
 
         // Set the dialog properties        SET TITLE TO LOCATIE NAAM -> tag
         popUpBuilder.setTitle(v.getTag().toString())
-                    .setView(popUpWindow)
+                .setView(popUpWindow)
                 .setPositiveButton("Meer info", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        // start intent to event activity
+
+                        // close dialog and go to event
+                        dialog.dismiss();
+                        Intent intent = new Intent(getApplicationContext(), EventActivity.class);
+                        intent.putExtra("clicked_event", e);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton("Sluit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        // go back to events loc activity
+                        Log.d("Negative", "onClick: ");
+
+                        // close dialog and restore map
+                        dialog.dismiss();
+                        // change other icons to full color
+                        for (int i = 0; i < icons_id_normal.length; i++){
+                                icons_id_normal[i].setImageDrawable(images_id_full[i]);
+                        }
                     }
                 })
                 .setNeutralButton("Volledig programma", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int id) {
-                        // start intent to full program
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        // close dialog and start intent to full program
+                        dialog.dismiss();
+                        Intent intent = new Intent(getApplicationContext(), ProgrActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 });
 
@@ -208,26 +234,68 @@ public class EventsLocActivity extends AppCompatActivity {
     }
 
     public Event findCurrentEvent(View v) {
-        int jsonFile = findRightJSON();
+
+        // get the right json file with events
+        int jsonFile = findRightJSON(v);
         ArrayList<Event> events = parseJSONToEvent(loadJSONFromAsset(jsonFile));
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        String time_now = timeFormat.format(calendar.getTime());
+        // make counters
+        int count_done = 0;
+        int count_to_start = 0;
 
-        Log.d("TESTING", ""+events.size());
+        // get current time
+        Date time_now = getCurrentTime();
+
+        // find the current event
         for (int i = 0; i < events.size(); i++) {
+
             Event e = (Event) events.get(i);
-            Log.d("NAME", e.getName());
-            Log.d("i", ""+ i);
-            Log.d("TIME", e.getTime());
+
+            // check if time is not empty (this is the case if there is no event)
+            if (e.getTime().isEmpty()) {
+                return e;
+            }
+
+            // get start and end time of the event
+            Date[] times = getEventTimes(e);
+            Date start_time = times[0];
+            Date end_time = times[1];
+
+            // check if selected event is happening at the moment
+            if (time_now.after(start_time) && time_now.before(end_time)) {
+                return e;
+            }
+            // check if all event is done
+            if (time_now.after(end_time)) {
+                count_done = count_done + 1;
+            }
+            // check if event still has to start
+            if (time_now.before(start_time)){
+                count_to_start = count_to_start + 1;
+            }
         }
 
-        Event e = (Event) events.get(0);
-        return e;
+        // check if all event are done
+        if (count_done == events.size()) {
+            Event event = new Event("Geen activiteiten meer", "Morgen weer!",
+                    "", "Huide locatie", "Vandaag zijn er geen speciale " +
+                    "activiteiten meer gepland", R.drawable.logo);
+            return event;
+        }
+
+        // check if all events still have to start
+        if (count_to_start == events.size()) {
+            Event e = (Event) events.get(0);
+            return e;
+        }
+
+        // if it there is still nothing returned, then some events are done but some have to start
+        Event e_found = (Event) events.get(count_done);
+        return e_found;
     }
 
-    public int findRightJSON(){
+    public int findRightJSON(View v){
+        String location = v.getTag().toString();
         Calendar calendar = Calendar.getInstance();
 
         SimpleDateFormat yearFormat = new SimpleDateFormat("YYYY");
@@ -244,24 +312,134 @@ public class EventsLocActivity extends AppCompatActivity {
 
         int jsonFile = 0;
 
+        // following locations have the same program everyday
+        // Of zet in no event openings tijden... Ohw maar die zie je niet...
+
+
+        // determine the right day, than determine the right location
         if (today.equals(friday)) {
-            Log.d("TEST", "Het is vrijdag");
-            jsonFile = R.raw.events_friday_g;
+            if (location.equals("Bios")) {
+                jsonFile = R.raw.events_friday_bios;
+            } else if (location.equals("MarketDome")) {
+                jsonFile = R.raw.events_friday_md;
+            } else if (location.equals("StageBusiness")) {
+                jsonFile = R.raw.events_friday_p1;
+            } else if (location.equals("StageDance")) {
+                jsonFile = R.raw.events_friday_p2;
+            } else if (location.equals("StageDome")) {
+                jsonFile = R.raw.events_friday_p3;
+            } else if (location.equals("Pool")) {
+                jsonFile = R.raw.events_friday_pool;
+            } else {
+                jsonFile = R.raw.no_event;
+            }
         } else if (today.equals(sat)) {
-            Log.d("TEST", "Het is zaterdag");
-            jsonFile = R.raw.events_sat_g;
+            if (location.equals("Bios")) {
+                jsonFile = R.raw.events_sat_bios;
+            } else if (location.equals("Market Dome")) {
+                jsonFile = R.raw.events_sat_md;
+            } else if (location.equals("Business Center - Podium #1")) {
+                jsonFile = R.raw.events_sat_p1;
+            } else if (location.equals("Dance Venue - Podium #2")) {
+                jsonFile = R.raw.events_sat_p2;
+            } else if (location.equals("Market Square - Podium #3")) {
+                jsonFile = R.raw.events_sat_p3;
+            } else if (location.equals("Zwembad")) {
+                jsonFile = R.raw.events_sat_pool;
+            } else if (location.equals("Restaurant")) {
+                jsonFile = R.raw.events_sat_rest1;
+            } else if (location.equals("Restaurant Grill")) {
+                jsonFile = R.raw.events_sat_rest2;
+            } else if (location.equals("Restaurant American")) {
+                jsonFile = R.raw.events_sat_rest3;
+            } else {
+                jsonFile = R.raw.no_event;
+            }
         } else if (today.equals(sun)) {
-            Log.d("TEST", "Het is zondag");
-            jsonFile = R.raw.events_sun_g;
+            if (location.equals("Bios")) {
+                jsonFile = R.raw.events_sun_bios;
+            } else if (location.equals("Market Dome")) {
+                jsonFile = R.raw.events_sun_md;
+            } else if (location.equals("Business Center - Podium #1")) {
+                jsonFile = R.raw.events_sun_p1;
+            } else if (location.equals("Dance Venue - Podium #2")) {
+                jsonFile = R.raw.events_sun_p2;
+            } else if (location.equals("Market Square - Podium #3")) {
+                jsonFile = R.raw.events_sun_p3;
+            } else if (location.equals("Zwembad")) {
+                jsonFile = R.raw.events_sun_pool;
+            } else {
+                jsonFile = R.raw.no_event;
+            }
         } else if (today.before(friday)) {
-            Log.d("TEST", "nog geen vrijdag");
-            jsonFile = R.raw.events_friday_g;
+            // jsonFile = R.raw.no_event; MAAR NU VOOR TESTEN:
+            if (location.equals("Bios")) {
+                jsonFile = R.raw.events_sun_bios;
+            } else if (location.equals("Market Dome")) {
+                jsonFile = R.raw.events_sun_md;
+            } else if (location.equals("Business Center - Podium #1")) {
+                jsonFile = R.raw.events_sun_p1;
+            } else if (location.equals("Dance Venue - Podium #2")) {
+                jsonFile = R.raw.events_sun_p2;
+            } else if (location.equals("Market Square - Podium #3")) {
+                jsonFile = R.raw.events_sun_p3;
+            } else if (location.equals("Zwembad")) {
+                jsonFile = R.raw.events_sun_pool;
+            } else {
+                jsonFile = R.raw.no_event;
+            }
+
         } else {
-            Log.d("TEST", "event voorbij");
-            jsonFile = R.raw.events_sun_g;                  // MAAK LAATSTE LEGE HIERVOOR AAN OF NEE ROEP ANDERE METHODE AAN
+            jsonFile = R.raw.no_event;
         }
 
         return jsonFile;
+    }
+
+    public Date getCurrentTime() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
+        SimpleDateFormat minFormat = new SimpleDateFormat("mm");
+
+        Date time_now = new Date(2018, 5,5,
+                Integer.parseInt(hourFormat.format(calendar.getTime())),
+                Integer.parseInt(minFormat.format(calendar.getTime())));
+
+        return time_now;
+    }
+
+    public Date[] getEventTimes(Event e) {
+
+        StringTokenizer time = new StringTokenizer(e.getTime(), "-");
+        String first = time.nextToken();// this will contain "Fruit"
+        String second = time.nextToken();
+        StringTokenizer split1 = new StringTokenizer(first, ".");
+
+        StringTokenizer split2 = new StringTokenizer(second, ".");
+        int hour = Integer.parseInt(split2.nextToken().trim());
+        String min = split2.nextToken();
+        StringTokenizer split3 = new StringTokenizer(min, " ");
+
+        Date start_time = new Date(2018, 5, 5,
+                Integer.parseInt(split1.nextToken().trim()),
+                Integer.parseInt(split1.nextToken().trim()));
+
+        Date end_time;
+
+        if (hour < 4) {
+            end_time = new Date(2018, 5, 6, hour,
+                    Integer.parseInt(split3.nextToken().trim()));
+        } else {
+            end_time = new Date(2018, 5, 5, hour,
+                    Integer.parseInt(split3.nextToken().trim()));
+        }
+
+        Date[] times = new Date[] {
+                start_time,
+                end_time
+        };
+
+        return times;
     }
 
     // DEZE TWEE IN HELPER WANT IN EVENTS ACTIVITY OOK GEBRUIKT
@@ -296,7 +474,7 @@ public class EventsLocActivity extends AppCompatActivity {
 
             for (int i = 0; i < array.length(); i++) {
                 JSONObject jo_inside = array.getJSONObject(i);
-                Log.d("Details-->", jo_inside.getString("name"));
+
                 String name = jo_inside.getString("name");
                 String day = jo_inside.getString("day");
                 String time = jo_inside.getString("time");

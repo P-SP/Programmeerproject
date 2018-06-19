@@ -1,0 +1,26 @@
+[
+  {
+    "name":"BOLLYWOOD POOL PARTY FT. DJ BURNOUT",
+    "day":"Zaterdag 30 juni",
+    "time":"16.00 - 21.00 uur",
+    "location":"Aqua Mundo",
+    "info":"... ",
+    "image_name":"pool_party"
+  },
+  {
+    "name":"BABYZWEMMEN",
+    "day":"Zaterdag 30 juni",
+    "time":"11.00 - 12.00 uur",
+    "location":"Aqua Mundo",
+    "info":"... ",
+    "image_name":"babyzwemmen"
+  },
+  {
+    "name":"AQUA FIT",
+    "day":"Zaterdag 30 juni",
+    "time":"12.00 - 12.30 uur",
+    "location":"Aqua Mundo",
+    "info":"... ",
+    "image_name":"aqua_fit"
+  }
+]

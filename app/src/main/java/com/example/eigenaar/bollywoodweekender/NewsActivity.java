@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 /**
  * Created by Eigenaar on 7-6-2018.
@@ -15,7 +18,20 @@ public class NewsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news);
+//        setContentView(R.layout.activity_news);
+
+        WebView webview = new WebView(this);
+        setContentView(webview);
+        webview.setWebViewClient(new MyBrowser());
+        webview.loadUrl("https://nl-nl.facebook.com/pg/BollywoodWeekender.nl/posts/?ref=page_internal");
+    }
+
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
     }
 
     @Override

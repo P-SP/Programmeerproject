@@ -1,0 +1,74 @@
+[
+  {
+    "name":"SALSA CLASS - ONLY WOMEN",
+    "day":"Zaterdag 30 juni",
+    "time":"13.00 - 13.45 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"salsa"
+  },
+  {
+    "name":"BACHATA DANCE CLINIC",
+    "day":"Zaterdag 30 juni",
+    "time":"15.00 - 16.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"salsa"
+  },
+  {
+    "name":"BOLLYWOOD DANCE CLINIC",
+    "day":"Zaterdag 30 juni",
+    "time":"16.00 - 16.30 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"bw_dance"
+  },
+  {
+    "name":"DJ",
+    "day":"Zaterdag 30 juni",
+    "time":"16.30 - 19.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"vlajgsdg dsag wg eg iojaeigoji;GJ R;JEigojRE'GJRl gIG",
+    "image_name":"dj"
+  },
+  {
+    "name":"BAITHAK POWER",
+    "day":"Zaterdag 30 juni",
+    "time":"19.00 - 21.30 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"Amit, Sachin Sewgolam en Jayant Mahabier ft. Krishwam Chedi from SURINAM",
+    "image_name":"baithak_power"
+  },
+  {
+    "name":"THE GREAT RAMANA MAGIC SHOW",
+    "day":"Zaterdag 30 juni",
+    "time":"22.00 - 23.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"... ",
+    "image_name":"ramana"
+  },
+  {
+    "name":"DJ SA HEAT",
+    "day":"Zaterdag 30 juni",
+    "time":"23.00 - 00.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"... ",
+    "image_name":"saheat"
+  },
+  {
+    "name":"DJ MOORTJE",
+    "day":"Zaterdag 30 juni",
+    "time":"00.00 - 01.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"The bubbling king",
+    "image_name":"moortje"
+  },
+  {
+    "name":"DEWINDERSINGH",
+    "day":"Zaterdag 30 juni",
+    "time":"01.00 - 03.00 uur",
+    "location":"Dance Venue - Podium #2",
+    "info":"... ",
+    "image_name":"dewindersingh"
+  }
+]
