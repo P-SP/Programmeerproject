@@ -24,7 +24,7 @@ public class WeatherRequest implements Response.Listener<JSONObject>, Response.E
 
     // callback
     public interface Callback {
-        void gotWeather(ArrayList<String> categories);
+        void gotWeather(ArrayList<String> today, ArrayList<String> tomorrow, ArrayList<String> day_after);
         void gotWeatherError(String message);
     }
 
@@ -53,31 +53,51 @@ public class WeatherRequest implements Response.Listener<JSONObject>, Response.E
 
     @Override
     public void onResponse(JSONObject response) {
-        JSONArray liveWeatherArray = new JSONArray();
+        JSONObject liveWeatherObject = new JSONObject();
         ArrayList<String> weatherToday = new ArrayList<>();
+        ArrayList<String> weatherTomorrow = new ArrayList<>();
+        ArrayList<String> weatherDayAfterTom = new ArrayList<>();
+        String[] today = new String[] {
+                "temp", "gtemp", "verw", "d0weer", "d0tmax", "d0tmin", "d0neerslag" };
+        String[] tomorrow = new String[] {"d1weer", "d1tmax", "d1tmin", "d1neerslag"};
+        String[] day_after_tomorrow = new String[] {"d2weer", "d2tmax", "d2tmin", "d2neerslag"};
 
         // extract the array
         try {
-            liveWeatherArray = response.getJSONArray("liveweer");
+            JSONArray liveWeatherArray = response.getJSONArray("liveweer");
+            liveWeatherObject = liveWeatherArray.getJSONObject(0);
         } catch (JSONException e) {
             callbackActivity.gotWeatherError(e.getMessage());
         }
 
-//        // get the forecasts
-//        String[] today = new String[] {
-//                "temp", "image", "gtemp", "verw", "d0weer", "d0tmax", "d0tmin", "d0neerslag" };
-//        String[] tomorrow = new String[] {"d1weer", "d1tmax", "d1tmin", "d1neerslag"};
-//        String[] day_after_tomorrow = new String[] {"d2weer", "d2tmax", "d2tmin", "d2neerslag"};
-//
-//        for (int i = 0; i < today.length; i++) {
-//            try{
-//                weatherToday.add(liveWeatherArray.getString("ts"));
-//            } catch (JSONException e) {
-//                callbackActivity.gotCategoriesError(e.getMessage());
-//            }
-////        }
+        // load weather today
+        for (int i = 0; i < today.length; i++) {
+            try{
+                weatherToday.add(liveWeatherObject.getString(today[i]));
+            } catch (JSONException e) {
+                callbackActivity.gotWeatherError(e.getMessage());
+            }
+        }
+
+        // load weather tomorrow
+        for (int i = 0; i < tomorrow.length; i++) {
+            try{
+                weatherTomorrow.add(liveWeatherObject.getString(tomorrow[i]));
+            } catch (JSONException e) {
+                callbackActivity.gotWeatherError(e.getMessage());
+            }
+        }
+
+        // load weather day after tomorrow
+        for (int i = 0; i < day_after_tomorrow.length; i++) {
+            try{
+                weatherDayAfterTom.add(liveWeatherObject.getString(day_after_tomorrow[i]));
+            } catch (JSONException e) {
+                callbackActivity.gotWeatherError(e.getMessage());
+            }
+        }
 
         // send it back
-        callbackActivity.gotWeather(weatherToday);
+        callbackActivity.gotWeather(weatherToday, weatherTomorrow, weatherDayAfterTom);
     }
 }

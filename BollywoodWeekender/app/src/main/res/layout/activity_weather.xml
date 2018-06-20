@@ -1,14 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="8dp">
 
     <TextView
-        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Center Parcs Limburgse Peel"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Actuele temperatuur: " />
+
+        <TextView
+            android:id="@+id/temp_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TEMP"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" \u2103"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gevoelstemperatuur: " />
+
+        <TextView
+            android:id="@+id/temp_feel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TEMP" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" \u2103"/>
+
+    </LinearLayout>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="Weer" />
-</android.support.constraint.ConstraintLayout>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:text="Temperatuur de rest van de dag" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/image_today"
+            android:scaleType="centerCrop"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Max: " />
+        <TextView
+            android:id="@+id/max_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" TEMP "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" \u2103"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Min: "/>
+        <TextView
+            android:id="@+id/min_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" TEMP "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" \u2103"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Kans op regen: "/>
+        <TextView
+            android:id="@+id/rain_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" TEMP "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/expectation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="VERWACHTING"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:text="Temperatuur morgen" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+        <ImageView
+            android:id="@+id/image_tomorrow"
+            android:scaleType="centerCrop"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Max: " />
+        <TextView
+            android:id="@+id/max_tomorrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" TEMP "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" \u2103"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Min: "/>
+        <TextView
+            android:id="@+id/min_tomorrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" TEMP "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" \u2103"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Kans op regen: "/>
+        <TextView
+            android:id="@+id/rain_tomorrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" TEMP "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:text="Temperatuur overmorgen" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+        <ImageView
+            android:id="@+id/image_day_after"
+            android:scaleType="centerCrop"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Max: " />
+        <TextView
+            android:id="@+id/max_day_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" TEMP "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" \u2103"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Min: "/>
+        <TextView
+            android:id="@+id/min_day_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" TEMP "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" \u2103"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Kans op regen: "/>
+        <TextView
+            android:id="@+id/rain_day_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" TEMP "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voorspellingen zijn afkomsting van: Weerlive.nl"/>
+
+</LinearLayout>
