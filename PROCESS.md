@@ -64,3 +64,6 @@ Morgen doen:
 
 ## Dag 14
 Koppeling met interactieve plattegrond werkt. Duurde langer dan verwacht. Pop up kan goed doorverwijzen naar event pagina en naar programma pagina. Facebook pagina wordt goed geopend. Voor de weer API heb je een account nodig, maar ik kan geen accound aanmaken. Dus ik zoek nu een andere API. Morgen moet API werken.
+
+## Dag 15
+Weer wordt goed ingeladen en weergeven. Layout kan nog wel verbeterd worden. MVP is nu af. Github is goed gekoppeld. Ben begonnen met plattegrond inladen, maar is nog niet inzoombaar. Morgen dat afmaken en beginnen met layout draaien, andere opties toevoegen en intents closen. Daarna code mooi maken.
