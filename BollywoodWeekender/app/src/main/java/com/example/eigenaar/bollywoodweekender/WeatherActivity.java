@@ -5,17 +5,29 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by Eigenaar on 7-6-2018.
  */
 
-public class WeatherActivity extends AppCompatActivity {
+public class WeatherActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
+
+//        // get the categories
+//        WeatherRequest apiRequest = new WeatherRequest(this);
+//        apiRequest.getWeather(this);
+
     }
 
     @Override
@@ -68,4 +80,38 @@ public class WeatherActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+//    @Override
+//    public void gotWeather(ArrayList<String> categories) {
+//        ListView categoriesList = findViewById(R.id.listViewCategories);
+//
+//        // instantiate and attach adapter
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1, categories);
+//        categoriesList.setAdapter(adapter);
+//
+//        // connect listener
+//        categoriesList.setOnItemClickListener(new clickListener());
+//    }
+//
+//    private class clickListener implements AdapterView.OnItemClickListener{
+//        @Override
+//        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//            String clickedCategory = (String) adapterView.getItemAtPosition(i);
+//
+//            // pass information to next activity
+//            Intent intent = new Intent(CategoriesActivity.this, MenuActivity.class);
+//            intent.putExtra("clicked_category", clickedCategory);
+//            startActivity(intent);
+//            finish();
+//        }
+//    }
+//
+//    @Override
+//    public void gotWeatherError(String message) {
+//        Toast.makeText(CategoriesActivity.this, "Something went wrong: " +
+//                message, Toast.LENGTH_SHORT).show();
+//    }
+
+
 }
