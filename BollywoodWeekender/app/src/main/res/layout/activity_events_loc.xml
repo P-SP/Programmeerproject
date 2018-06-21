@@ -220,7 +220,6 @@ tools:context="com.example.eigenaar.bollywoodweekender.EventsLocActivity">
             android:layout_marginStart="140dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/stage_right"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.06999999"
             app:srcCompat="@drawable/podium1" />
@@ -234,11 +233,9 @@ tools:context="com.example.eigenaar.bollywoodweekender.EventsLocActivity">
             android:text="Business Center Podium #1"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/stage_right"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/stage_right"
             android:layout_width="136dp"
             android:layout_height="161dp"
             android:layout_marginEnd="8dp"

@@ -46,7 +46,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
         day_spinner.setOnItemSelectedListener(this);
     }
 
-    // on click apinner
+    // on click spinner
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         GridView eventsGrid = findViewById(R.id.gridviewEvents);
 

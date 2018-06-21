@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.github.chrisbanes.photoview.PhotoView;
+
 /**
  * Created by Eigenaar on 7-6-2018.
  */
@@ -16,6 +18,11 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        PhotoView photoView = (PhotoView) findViewById(R.id.image_view);
+//        photoView.setImageResource(R.drawable.map_cottages);
+        photoView.setImageResource(R.drawable.map_cottages);
+//        photoView.setMaximumScale(10);
     }
 
     @Override

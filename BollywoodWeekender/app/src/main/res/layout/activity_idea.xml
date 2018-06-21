@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    tools:context="com.example.eigenaar.bollywoodweekender.IdeaActivity">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Heb jij een leuk idee voor de volgende editie? Stuur dan meteen een berichtje!"/>
+
+    <EditText
+        android:id="@+id/new_idea"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="Jouw idee" />
+
+    <Button
+        android:id="@+id/send_idea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ideeën"/>
-</android.support.constraint.ConstraintLayout>
+        android:layout_gravity="center_horizontal"
+        android:text="Stuur idee"
+        android:onClick="sendMail"/>
+
+</LinearLayout>
