@@ -67,3 +67,6 @@ Koppeling met interactieve plattegrond werkt. Duurde langer dan verwacht. Pop up
 
 ## Dag 15
 Weer wordt goed ingeladen en weergeven. Layout kan nog wel verbeterd worden. MVP is nu af. Github is goed gekoppeld. Ben begonnen met plattegrond inladen, maar is nog niet inzoombaar. Morgen dat afmaken en beginnen met layout draaien, andere opties toevoegen en intents closen. Daarna code mooi maken.
+
+## Dag 16
+Plattegrond is inzoombaar. Andere opties zijn toegevoed. Alleen programma pagina werkt niet (drop down). Dit is vreemd want code werkt op andere pagina wel. Veel optinele dingen gedaan, maar ik moet wel echt beginnen met het mooi maken van de code. Layout moet ook nog kunnen draaien en intents closen moet nog.
