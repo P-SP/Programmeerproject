@@ -63,10 +63,20 @@ Morgen doen:
 - Github pagina op juiste manier indelen (android studio project nog een keer koppelen)
 
 ## Dag 14
-Koppeling met interactieve plattegrond werkt. Duurde langer dan verwacht. Pop up kan goed doorverwijzen naar event pagina en naar programma pagina. Facebook pagina wordt goed geopend. Voor de weer API heb je een account nodig, maar ik kan geen accound aanmaken. Dus ik zoek nu een andere API. Morgen moet API werken.
+Koppeling met interactieve plattegrond werkt. Duurde langer dan verwacht. Pop up kan goed doorverwijzen naar event pagina en naar programma pagina. Facebook pagina wordt goed geopend. Voor de weer API heb je een account nodig, maar ik kan geen account aanmaken. Dus ik zoek nu een andere API. Morgen moet API werken.
 
 ## Dag 15
 Weer wordt goed ingeladen en weergeven. Layout kan nog wel verbeterd worden. MVP is nu af. Github is goed gekoppeld. Ben begonnen met plattegrond inladen, maar is nog niet inzoombaar. Morgen dat afmaken en beginnen met layout draaien, andere opties toevoegen en intents closen. Daarna code mooi maken.
 
 ## Dag 16
-Plattegrond is inzoombaar. Andere opties zijn toegevoed. Alleen programma pagina werkt niet (drop down). Dit is vreemd want code werkt op andere pagina wel. Veel optinele dingen gedaan, maar ik moet wel echt beginnen met het mooi maken van de code. Layout moet ook nog kunnen draaien en intents closen moet nog.
+Plattegrond is inzoombaar. Andere opties zijn toegevoegd. Alleen programma pagina werkt niet (drop down). Dit is vreemd want code werkt op andere pagina wel. Veel optionele dingen gedaan, maar ik moet wel echt beginnen met het mooi maken van de code. Layout moet ook nog kunnen draaien en intents closen moet nog.
+
+## Dag 17
+Programma pagina werkt. Layout van event pagina en activiteiten pagina is al beter. Wat gedaan moet worden:
+- layout moet mooi en uniform
+- layout voor gedraaid scherm
+- pop up window knoppen naast elkaar en mooi
+- niet steeds een nieuwe pagina openen als je navigeert met menu
+- naam bovenin app veranderen
+- check berekening van tijden
+- code mooi maken 
