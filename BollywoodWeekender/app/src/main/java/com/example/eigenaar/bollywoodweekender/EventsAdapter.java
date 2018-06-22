@@ -34,11 +34,13 @@ public class EventsAdapter extends ArrayAdapter<Event> {
         // get places
         ImageView photo = convertView.findViewById(R.id.event_image);
         TextView name = convertView.findViewById(R.id.event_name);
+        TextView time = convertView.findViewById(R.id.event_time);
 
-        // set right photo and name
+        // set right content
         Event e = events.get(position);
         photo.setImageDrawable(getContext().getResources().getDrawable(e.getDrawableID()));
         name.setText(e.getName());
+        time.setText(e.getTime());
 
         return convertView;
     }

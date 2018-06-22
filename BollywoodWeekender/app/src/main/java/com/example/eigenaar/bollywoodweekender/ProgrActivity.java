@@ -17,7 +17,7 @@ import com.github.chrisbanes.photoview.PhotoView;
  * Created by Eigenaar on 7-6-2018.
  */
 
-public class ProgrActivity extends AppCompatActivity {
+public class ProgrActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class ProgrActivity extends AppCompatActivity {
 
         // apply the adapter to the spinner and start listening
         day_spinner.setAdapter(adapter);
-//        day_spinner.setOnItemSelectedListener(this);
+        day_spinner.setOnItemSelectedListener(this);
     }
 
     // on click spinner
@@ -51,15 +51,21 @@ public class ProgrActivity extends AppCompatActivity {
         if (pos == 0) {
             photoView1.setImageResource(R.drawable.friday_1);
             photoView2.setImageResource(R.drawable.friday_2);
+            photoView3.setVisibility(View.INVISIBLE);
+            photoView4.setVisibility(View.INVISIBLE);
         } else if (pos == 1) {
             photoView1.setImageResource(R.drawable.sat_1);
             photoView2.setImageResource(R.drawable.sat_2);
             photoView3.setImageResource(R.drawable.sat_3);
+            photoView3.setVisibility(View.VISIBLE);
             photoView4.setImageResource(R.drawable.sat_4);
+            photoView4.setVisibility(View.VISIBLE);
         } else {
             photoView1.setImageResource(R.drawable.sun_1);
             photoView2.setImageResource(R.drawable.sun_2);
             photoView3.setImageResource(R.drawable.sun_3);
+            photoView3.setVisibility(View.VISIBLE);
+            photoView4.setVisibility(View.INVISIBLE);
         }
     }
 
