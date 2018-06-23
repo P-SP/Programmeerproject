@@ -80,3 +80,11 @@ Programma pagina werkt. Layout van event pagina en activiteiten pagina is al bet
 - naam bovenin app veranderen
 - check berekening van tijden
 - code mooi maken 
+
+## Dag 18
+Er zat een fout in het berekenen van de tijden, maar dat is opgelost. Verder heb ik de namen bovenin de app veranderd. Wat nu nog gedaan moet worden:
+- layout moet mooi en uniform
+- layout voor gedraaid scherm
+- pop up window knoppen naast elkaar en mooi
+- niet steeds een nieuwe pagina openen als je navigeert met menu
+- code mooi maken 
