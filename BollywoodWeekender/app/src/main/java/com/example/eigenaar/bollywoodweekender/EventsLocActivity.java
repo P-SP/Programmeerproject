@@ -374,21 +374,26 @@ public class EventsLocActivity extends AppCompatActivity {
         } else if (today.before(friday)) {
             // jsonFile = R.raw.no_event; MAAR NU VOOR TESTEN:
             if (location.equals("Bios")) {
-                jsonFile = R.raw.events_sun_bios;
+                jsonFile = R.raw.events_sat_bios;
             } else if (location.equals("Market Dome")) {
-                jsonFile = R.raw.events_sun_md;
+                jsonFile = R.raw.events_sat_md;
             } else if (location.equals("Business Center - Podium #1")) {
-                jsonFile = R.raw.events_sun_p1;
+                jsonFile = R.raw.events_sat_p1;
             } else if (location.equals("Dance Venue - Podium #2")) {
-                jsonFile = R.raw.events_sun_p2;
+                jsonFile = R.raw.events_sat_p2;
             } else if (location.equals("Market Square - Podium #3")) {
-                jsonFile = R.raw.events_sun_p3;
+                jsonFile = R.raw.events_sat_p3;
             } else if (location.equals("Zwembad")) {
-                jsonFile = R.raw.events_sun_pool;
+                jsonFile = R.raw.events_sat_pool;
+            } else if (location.equals("Restaurant")) {
+                jsonFile = R.raw.events_sat_rest1;
+            } else if (location.equals("Restaurant Grill")) {
+                jsonFile = R.raw.events_sat_rest2;
+            } else if (location.equals("Restaurant American")) {
+                jsonFile = R.raw.events_sat_rest3;
             } else {
                 jsonFile = R.raw.no_event;
             }
-
         } else {
             jsonFile = R.raw.no_event;
         }
@@ -397,13 +402,20 @@ public class EventsLocActivity extends AppCompatActivity {
     }
 
     public Date getCurrentTime() {
+        Date time_now;
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
         SimpleDateFormat minFormat = new SimpleDateFormat("mm");
+        int hour = Integer.parseInt(hourFormat.format(calendar.getTime()));
 
-        Date time_now = new Date(2018, 5,5,
-                Integer.parseInt(hourFormat.format(calendar.getTime())),
-                Integer.parseInt(minFormat.format(calendar.getTime())));
+        // take year, month and date the same, because only the time maters
+        if (hour < 4) {
+            time_now = new Date(2018, 5,6, hour,
+                    Integer.parseInt(minFormat.format(calendar.getTime())));
+        } else {
+            time_now = new Date(2018, 5,5, hour,
+                    Integer.parseInt(minFormat.format(calendar.getTime())));
+        }
 
         return time_now;
     }
@@ -426,6 +438,7 @@ public class EventsLocActivity extends AppCompatActivity {
 
         Date end_time;
 
+        // take year, month and date the same, because only the time maters
         if (hour < 4) {
             end_time = new Date(2018, 5, 6, hour,
                     Integer.parseInt(split3.nextToken().trim()));
