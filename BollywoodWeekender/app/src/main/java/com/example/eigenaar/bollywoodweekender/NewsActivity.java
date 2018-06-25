@@ -10,7 +10,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 /**
- * Created by Eigenaar on 7-6-2018.
+ * This activity shows the latest news in the official facebook page.
+ *
+ * Puja Chandrikasingh
+ * 11059842
  */
 
 public class NewsActivity extends AppCompatActivity {
@@ -18,14 +21,18 @@ public class NewsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_news);
 
+        // open a new web view with the right facebook page
         WebView webview = new WebView(this);
         setContentView(webview);
         webview.setWebViewClient(new MyBrowser());
         webview.loadUrl("https://nl-nl.facebook.com/pg/BollywoodWeekender.nl/posts/?ref=page_internal");
     }
 
+    /**
+     * This function makes sure that the facebook page is opened in the app (and not in a separate
+     * browser).
+     */
     private class MyBrowser extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -34,6 +41,7 @@ public class NewsActivity extends AppCompatActivity {
         }
     }
 
+    // create menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);

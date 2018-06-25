@@ -15,25 +15,28 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * Created by Eigenaar on 20-6-2018.
+ * This file handles the request to the API of: http://weerlive.nl.
+ *
+ * Puja Chandrikasingh
+ * 11059842
  */
 
 public class WeatherRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
     private Context context;
     private Callback callbackActivity;
 
-    // callback
     public interface Callback {
         void gotWeather(ArrayList<String> today, ArrayList<String> tomorrow, ArrayList<String> day_after);
         void gotWeatherError(String message);
     }
 
-    // Constructor
     public WeatherRequest(Context aContext){
         context = aContext;
     }
 
-    // attempts to retrieve weather from API
+    /**
+     * This function makes the API request.
+     */
     public void getWeather(Callback activity){
         callbackActivity = activity;
 
@@ -42,7 +45,8 @@ public class WeatherRequest implements Response.Listener<JSONObject>, Response.E
 
         // create JSON object
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                "http://weerlive.nl/api/json-data-10min.php?key=a9ac4fdfcf&locatie=America", null, this, this);
+                "http://weerlive.nl/api/json-data-10min.php?key=a9ac4fdfcf&locatie=America",
+                null, this, this);
         queue.add(jsonObjectRequest);
     }
 
@@ -57,12 +61,14 @@ public class WeatherRequest implements Response.Listener<JSONObject>, Response.E
         ArrayList<String> weatherToday = new ArrayList<>();
         ArrayList<String> weatherTomorrow = new ArrayList<>();
         ArrayList<String> weatherDayAfterTom = new ArrayList<>();
+
+        // arrays with the needed variables (keys in JSON) from the API
         String[] today = new String[] {
                 "temp", "gtemp", "verw", "d0weer", "d0tmax", "d0tmin", "d0neerslag" };
         String[] tomorrow = new String[] {"d1weer", "d1tmax", "d1tmin", "d1neerslag"};
         String[] day_after_tomorrow = new String[] {"d2weer", "d2tmax", "d2tmin", "d2neerslag"};
 
-        // extract the array
+        // extract the JSONArray from the JSONObject that contains the information
         try {
             JSONArray liveWeatherArray = response.getJSONArray("liveweer");
             liveWeatherObject = liveWeatherArray.getJSONObject(0);

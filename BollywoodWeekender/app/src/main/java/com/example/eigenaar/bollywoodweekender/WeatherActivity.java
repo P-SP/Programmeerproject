@@ -20,7 +20,11 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 /**
- * Created by Eigenaar on 7-6-2018.
+ * This activity shows the current weather in Limburg, America. Moreover, the predictions of the
+ * rest of the day and the two coming days are given.
+ *
+ * Puja Chandrikasingh
+ * 11059842
  */
 
 public class WeatherActivity extends AppCompatActivity  implements WeatherRequest.Callback {
@@ -30,12 +34,78 @@ public class WeatherActivity extends AppCompatActivity  implements WeatherReques
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        // get the categories
+        // ask for the weather
         WeatherRequest apiRequest = new WeatherRequest(this);
         apiRequest.getWeather(this);
-
     }
 
+    @Override
+    public void gotWeather(ArrayList<String> today, ArrayList<String> tomorrow, ArrayList<String> day_after) {
+
+        // get places and set right value
+
+        // today
+        TextView temp_now = findViewById(R.id.temp_now);
+        temp_now.setText(today.get(0));
+
+        TextView temp_feel = findViewById(R.id.temp_feel);
+        temp_feel.setText(today.get(1));
+
+        ImageView image_today = findViewById(R.id.image_today);
+        int id = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:" +
+                "drawable/" + today.get(3), null, null);
+        image_today.setImageResource(id);
+
+        TextView temp_max = findViewById(R.id.max_today);
+        temp_max.setText(today.get(4));
+
+        TextView temp_min = findViewById(R.id.min_today);
+        temp_min.setText(today.get(5));
+
+        TextView rain = findViewById(R.id.rain_today);
+        rain.setText(today.get(6));
+
+        TextView expectation = findViewById(R.id.expectation);
+        expectation.setText(today.get(2));
+
+        // tomorrow
+        ImageView image_tom = findViewById(R.id.image_tomorrow);
+        int id_tom = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:" +
+                "drawable/" + tomorrow.get(0), null, null);
+        image_tom.setImageResource(id_tom);
+
+        TextView max_tom = findViewById(R.id.max_tomorrow);
+        max_tom.setText(tomorrow.get(1));
+
+        TextView min_tom = findViewById(R.id.min_tomorrow);
+        min_tom.setText(tomorrow.get(2));
+
+        TextView rain_tom = findViewById(R.id.rain_tomorrow);
+        rain_tom.setText(tomorrow.get(3));
+
+        // day after tomorrow
+        ImageView image_day_after = findViewById(R.id.image_day_after);
+        int id_day_after = getResources().getIdentifier("com.example.eigenaar." +
+                "bollywoodweekender:drawable/" + day_after.get(0), null, null);
+        image_day_after.setImageResource(id_day_after);
+
+        TextView max_day_after = findViewById(R.id.max_day_after);
+        max_day_after.setText(day_after.get(1));
+
+        TextView min_day_after = findViewById(R.id.min_day_after);
+        min_day_after.setText(day_after.get(2));
+
+        TextView rain_day_after = findViewById(R.id.rain_day_after);
+        rain_day_after.setText(day_after.get(3));
+    }
+
+    @Override
+    public void gotWeatherError(String message) {
+        Toast.makeText(this, "Something went wrong: " +
+                message, Toast.LENGTH_SHORT).show();
+    }
+
+    // create menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -86,67 +156,5 @@ public class WeatherActivity extends AppCompatActivity  implements WeatherReques
         }
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void gotWeather(ArrayList<String> today, ArrayList<String> tomorrow, ArrayList<String> day_after) {
-
-        // get places and set right value
-        // today
-        TextView temp_now = findViewById(R.id.temp_now);
-        temp_now.setText(today.get(0));
-        TextView temp_feel = findViewById(R.id.temp_feel);
-        temp_feel.setText(today.get(1));
-        ImageView image_today = findViewById(R.id.image_today);
-        int id = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:drawable/" + today.get(3), null, null);
-        image_today.setImageResource(id);
-        TextView temp_max = findViewById(R.id.max_today);
-        temp_max.setText(today.get(4));
-        TextView temp_min = findViewById(R.id.min_today);
-        temp_min.setText(today.get(5));
-        TextView rain = findViewById(R.id.rain_today);
-        rain.setText(today.get(6));
-        TextView expectation = findViewById(R.id.expectation);
-        expectation.setText(today.get(2));
-
-        // tomorrow
-        ImageView image_tom = findViewById(R.id.image_tomorrow);
-        int id_tom = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:drawable/" + tomorrow.get(0), null, null);
-        image_tom.setImageResource(id_tom);
-        TextView max_tom = findViewById(R.id.max_tomorrow);
-        max_tom.setText(tomorrow.get(1));
-        TextView min_tom = findViewById(R.id.min_tomorrow);
-        min_tom.setText(tomorrow.get(2));
-        TextView rain_tom = findViewById(R.id.rain_tomorrow);
-        rain_tom.setText(tomorrow.get(3));
-
-        // tomorrow
-        ImageView image_day_after = findViewById(R.id.image_day_after);
-        int id_day_after = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:drawable/" + day_after.get(0), null, null);
-        image_day_after.setImageResource(id_day_after);
-        TextView max_day_after = findViewById(R.id.max_day_after);
-        max_day_after.setText(day_after.get(1));
-        TextView min_day_after = findViewById(R.id.min_day_after);
-        min_day_after.setText(day_after.get(2));
-        TextView rain_day_after = findViewById(R.id.rain_day_after);
-        rain_day_after.setText(day_after.get(3));
-
-
-        for (int i = 0; i < today.size(); i++){
-            Log.d("TODAY", today.get(i));
-        }
-        for (int i = 0; i < tomorrow.size(); i++){
-            Log.d("Tomorrow", tomorrow.get(i));
-        }
-        for (int i = 0; i < day_after.size(); i++){
-            Log.d("Day after", day_after.get(i));
-        }
-    }
-
-    @Override
-    public void gotWeatherError(String message) {
-        Toast.makeText(this, "Something went wrong: " +
-                message, Toast.LENGTH_SHORT).show();
-    }
-
 
 }

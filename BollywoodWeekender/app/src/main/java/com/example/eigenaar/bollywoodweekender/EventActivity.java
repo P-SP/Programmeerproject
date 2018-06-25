@@ -9,20 +9,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by Eigenaar on 7-6-2018.
+ * This activity shows the information of a single event. The user can only view this activity via
+ * the Events activity or via the interactive map.
+ *
+ * Puja Chandrikasingh
+ * 11059842
  */
 
 public class EventActivity extends AppCompatActivity {
-    Event retrievedEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
-        // get info from main activity
+        // get event from previous activity
         Intent intent = getIntent();
-        retrievedEvent = (Event) intent.getSerializableExtra("clicked_event");
+        Event retrievedEvent = (Event) intent.getSerializableExtra("clicked_event");
 
         // get places
         ImageView photo = findViewById(R.id.picture);
@@ -32,7 +35,7 @@ public class EventActivity extends AppCompatActivity {
         TextView location = findViewById(R.id.locationView);
         TextView info = findViewById(R.id.infoView);
 
-        // put the right values in it
+        // load the right values in the layout
         photo.setImageDrawable(getDrawable(retrievedEvent.getDrawableID()));
         name.setText(retrievedEvent.getName());
         day.setText(retrievedEvent.getDay());
@@ -41,6 +44,7 @@ public class EventActivity extends AppCompatActivity {
         info.setText(retrievedEvent.getInfo());
     }
 
+    // create menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -49,43 +53,37 @@ public class EventActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        // check which item is selected and go to the right activity
         if(item.getItemId()== R.id.home){
-            // go to next activity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
         if(item.getItemId()== R.id.eventsLoc){
-            // go to next activity
             Intent intent = new Intent(this, EventsLocActivity.class);
             startActivity(intent);
         }
         if(item.getItemId()== R.id.weather){
-            // go to next activity
             Intent intent = new Intent(this, WeatherActivity.class);
             startActivity(intent);
         }
         if(item.getItemId()== R.id.news){
-            // go to next activity
             Intent intent = new Intent(this, NewsActivity.class);
             startActivity(intent);
         }
         if(item.getItemId()== R.id.activities){
-            // go to next activity
             Intent intent = new Intent(this, EventsActivity.class);
             startActivity(intent);
         }
         if(item.getItemId()== R.id.program){
-            // go to next activity
             Intent intent = new Intent(this, ProgrActivity.class);
             startActivity(intent);
         }
         if(item.getItemId()== R.id.map){
-            // go to next activity
             Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
         }
         if(item.getItemId()== R.id.idea){
-            // go to next activity
             Intent intent = new Intent(this, IdeaActivity.class);
             startActivity(intent);
         }

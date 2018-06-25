@@ -3,7 +3,6 @@ package com.example.eigenaar.bollywoodweekender;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,42 +21,50 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
- * Created by Eigenaar on 9-6-2018.
+ * This activity shows all the events per day. The user can pick the day and the events are shown in
+ * a GridView with pictures, time and title.
+ *
+ * Puja Chandrikasingh
+ * 11059842
  */
 
 public class EventsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
-    ArrayList<Event> events = new ArrayList<>();
+    JsonHelper jsonHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
-        // fill spinner dropdown
-        Spinner day_spinner = (Spinner) findViewById(R.id.spinner_day);
+        jsonHelper = new JsonHelper(this);
 
-        // instantiate adapter
+        // find the dropdown
+        Spinner daySpinner = (Spinner) findViewById(R.id.spinnerDay);
+
+        // instantiate the adapter for dropdown
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.days_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // apply the adapter to the spinner and start listening
-        day_spinner.setAdapter(adapter);
-        day_spinner.setOnItemSelectedListener(this);
+        // apply the adapter to the dropdown and start listening
+        daySpinner.setAdapter(adapter);
+        daySpinner.setOnItemSelectedListener(this);
     }
 
-    // on click spinner
+    /**
+     * This function makes sure the right JSON file is loaded, when a user picks a day.
+     */
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        ArrayList<Event> events = new ArrayList<>();
         GridView eventsGrid = findViewById(R.id.gridviewEvents);
 
-        // read right json file
+        // read the right right json file
         if (pos == 0) {
-            events = parseJSONToEvent(loadJSONFromAsset(R.raw.events_friday_g));
+            events = jsonHelper.parseJSONToEvent(jsonHelper.loadJSONFromAsset(R.raw.events_friday_g));
         } else if (pos == 1) {
-            events = parseJSONToEvent(loadJSONFromAsset(R.raw.events_sat_g));
+            events = jsonHelper.parseJSONToEvent(jsonHelper.loadJSONFromAsset(R.raw.events_sat_g));
         } else {
-            events = parseJSONToEvent(loadJSONFromAsset(R.raw.events_sun_g));
+            events = jsonHelper.parseJSONToEvent(jsonHelper.loadJSONFromAsset(R.raw.events_sun_g));
         }
 
         // instantiate and attach adapter to GridView
@@ -68,61 +76,13 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
+        // if nothing is selected, then the events for friday are shown
     }
 
-    // code van https://stackoverflow.com/questions/19945411/android-java-how-can-i-parse-a-local-json-file-from-assets-folder-into-a-listvi
-    public String loadJSONFromAsset(int json_file) {
-        String json = null;
-
-        try {
-            InputStream input = getApplicationContext().getResources().openRawResource(json_file);
-            int size = input.available();
-            byte[] buffer = new byte[size];
-            input.read(buffer);
-            input.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException exception) {
-
-            // VERANDER NAAR MESSAGE VOOR USER
-            Log.d("json", exception.getMessage());
-            exception.printStackTrace();
-            return null;
-        }
-
-        return json;
-    }
-
-    public ArrayList<Event> parseJSONToEvent(String eventsJSON){
-        ArrayList<Event> events = new ArrayList<>();
-
-        try {
-            JSONArray array = new JSONArray(eventsJSON);
-            Event event;
-
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject jo_inside = array.getJSONObject(i);
-
-                String name = jo_inside.getString("name");
-                String day = jo_inside.getString("day");
-                String time = jo_inside.getString("time");
-                String location = jo_inside.getString("location");
-                String info = jo_inside.getString("info");
-                String image = jo_inside.getString("image_name");
-
-                //Add your values in your `ArrayList` as below:
-                event = new Event(name, day, time, location, info, this.getResources().getIdentifier(
-                        image, "drawable", getPackageName()));
-
-                events.add(event);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return events;
-    }
-
+    /**
+     * This function makes sure the right event is loaded, when a user clicks on an event in the
+     * GridView.
+     */
     private class GridItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -135,6 +95,10 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
         }
     }
 
+    /**
+     * The two functions bellow create the menu and send the user to the right page when they
+     * select an option.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -143,53 +107,40 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.home){
-            // go to next activity
+
+        // check which item is selected and go to the right activity
+        if(item.getItemId()== R.id.home){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-        if(item.getItemId()==R.id.eventsLoc){
-            // go to next activity
+        if(item.getItemId()== R.id.eventsLoc){
             Intent intent = new Intent(this, EventsLocActivity.class);
             startActivity(intent);
         }
-        if(item.getItemId()==R.id.weather){
-            // go to next activity
+        if(item.getItemId()== R.id.weather){
             Intent intent = new Intent(this, WeatherActivity.class);
             startActivity(intent);
         }
-        if(item.getItemId()==R.id.news){
-            // go to next activity
+        if(item.getItemId()== R.id.news){
             Intent intent = new Intent(this, NewsActivity.class);
             startActivity(intent);
         }
-        if(item.getItemId()==R.id.activities){
-            // go to next activity
+        if(item.getItemId()== R.id.activities){
             Intent intent = new Intent(this, EventsActivity.class);
             startActivity(intent);
         }
-        if(item.getItemId()==R.id.program){
-            // go to next activity
+        if(item.getItemId()== R.id.program){
             Intent intent = new Intent(this, ProgrActivity.class);
             startActivity(intent);
         }
-        if(item.getItemId()==R.id.map){
-            // go to next activity
+        if(item.getItemId()== R.id.map){
             Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
         }
-        if(item.getItemId()==R.id.idea){
-            // go to next activity
+        if(item.getItemId()== R.id.idea){
             Intent intent = new Intent(this, IdeaActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    // VOLGENS MIJ KAN DIT WEG
-    public void showAct(View v) {
-        // go to next activity
-        Intent intent = new Intent(this, EventActivity.class);
-        startActivity(intent);
     }
 }

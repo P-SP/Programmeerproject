@@ -14,38 +14,42 @@ import android.widget.Spinner;
 import com.github.chrisbanes.photoview.PhotoView;
 
 /**
- * Created by Eigenaar on 7-6-2018.
+ * This activity enables the user to see the program of a selected day. The program is shown as
+ * pictures with all the locations and times for the selected day. The user can select the day.
+ *
+ * Puja Chandrikasingh
+ * 11059842
  */
 
-public class ProgrActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
+public class ProgrActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progr);
 
-        // fill spinner dropdown
+        // find the dropdown
         Spinner day_spinner = (Spinner) findViewById(R.id.spinner_day_progr);
 
-        // instantiate adapter
+        // instantiate the adapter for dropdown
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.days_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // apply the adapter to the spinner and start listening
+        // apply the adapter to the dropdown and start listening
         day_spinner.setAdapter(adapter);
         day_spinner.setOnItemSelectedListener(this);
     }
 
-    // on click spinner
+    /**
+     * This function makes sure the right JSON file is loaded, when a user picks a day.
+     */
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         // get places
         PhotoView photoView1 = (PhotoView) findViewById(R.id.progr1);
         PhotoView photoView2 = (PhotoView) findViewById(R.id.progr2);
         PhotoView photoView3 = (PhotoView) findViewById(R.id.progr3);
         PhotoView photoView4 = (PhotoView) findViewById(R.id.progr4);
-
-//        photoView.setMaximumScale(10);
 
         // load right images
         if (pos == 0) {
@@ -70,9 +74,10 @@ public class ProgrActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
+        // if nothing is selected, then the events for friday are shown
     }
 
+    // create menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);

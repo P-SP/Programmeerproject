@@ -9,7 +9,10 @@ import android.view.MenuItem;
 import com.github.chrisbanes.photoview.PhotoView;
 
 /**
- * Created by Eigenaar on 7-6-2018.
+ * This activity shows the full map of the park. A user can zoom in and find his/her cottage.
+ *
+ * Puja Chandrikasingh
+ * 11059842
  */
 
 public class MapActivity extends AppCompatActivity {
@@ -20,11 +23,11 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
         PhotoView photoView = (PhotoView) findViewById(R.id.image_view);
-//        photoView.setImageResource(R.drawable.map_cottages);
         photoView.setImageResource(R.drawable.map_cottages);
-//        photoView.setMaximumScale(10);
+        photoView.setMaximumScale(10);
     }
 
+    // create menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);

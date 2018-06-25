@@ -3,7 +3,11 @@ package com.example.eigenaar.bollywoodweekender;
 import java.io.Serializable;
 
 /**
- * Class for a single event.
+ * This files contains the definition of the Event class which contains all relevant information
+ * for a single event.
+ *
+ * Puja Chandrikasingh
+ * 11059842
  */
 
 public class Event implements Serializable {
@@ -21,7 +25,7 @@ public class Event implements Serializable {
         info = anInfo;
         drawableID = anId;
     }
-    // getter functions
+
     public String getName() {
         return name;
     }

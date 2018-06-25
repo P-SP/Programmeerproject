@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/event_image"
+        android:id="@+id/eventImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop" />
@@ -25,19 +25,19 @@
                 android:text="Nu/straks:" />
 
             <TextView
-                android:id="@+id/event_name"
+                android:id="@+id/eventName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp" />
 
             <TextView
-                android:id="@+id/event_time"
+                android:id="@+id/eventTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp" />
 
             <TextView
-                android:id="@+id/event_day"
+                android:id="@+id/eventDay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp" />

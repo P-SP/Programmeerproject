@@ -7,6 +7,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+/**
+ * The main activity only contains a picture.
+ *
+ * Puja Chandrikasingh
+ * 11059842
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    // create menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

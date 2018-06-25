@@ -13,7 +13,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Eigenaar on 13-6-2018.
+ * This files contains the ArrayAdapter for the GridView of events. For each event it loads the
+ * picture, time and title.
+ *
+ * Puja Chandrikasingh
+ * 11059842
  */
 
 public class EventsAdapter extends ArrayAdapter<Event> {
@@ -28,13 +32,14 @@ public class EventsAdapter extends ArrayAdapter<Event> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_event_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_event_item,
+                    parent, false);
         }
 
         // get places
-        ImageView photo = convertView.findViewById(R.id.event_image);
-        TextView name = convertView.findViewById(R.id.event_name);
-        TextView time = convertView.findViewById(R.id.event_time);
+        ImageView photo = convertView.findViewById(R.id.eventImage);
+        TextView name = convertView.findViewById(R.id.eventName);
+        TextView time = convertView.findViewById(R.id.eventTime);
 
         // set right content
         Event e = events.get(position);
