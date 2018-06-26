@@ -88,3 +88,6 @@ Er zat een fout in het berekenen van de tijden, maar dat is opgelost. Verder heb
 - pop up window knoppen naast elkaar en mooi
 - niet steeds een nieuwe pagina openen als je navigeert met menu
 - code mooi maken 
+
+## Dag 19 (maandag 25-6-2018)
+Code is nu netjes. Alleen menu wordt nog in elke activiteit gemaakt. Verder werkt switch in menu niet. Rest werkt en is goed. Morgen alle layout punten afhandelen.
