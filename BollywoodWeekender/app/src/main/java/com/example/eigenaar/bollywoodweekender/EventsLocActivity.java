@@ -6,25 +6,15 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.StringTokenizer;
 
 /**
  * This activity shows an interactive map with event locations. When a user clicks on an event
@@ -35,8 +25,14 @@ import java.util.StringTokenizer;
  */
 
 public class EventsLocActivity extends AppCompatActivity {
+
+    // helpers for handeling time and json functions
     TimeHelper timeHelper;
     JsonHelper jsonHelper;
+
+    // this is used to maintain pop-up on turning
+    Event popUpEvent;
+    Boolean popUpOpen = false;
 
     // lists with id's of images and ImageViews
     ImageView[] icons_id_view;
@@ -46,7 +42,7 @@ public class EventsLocActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_events_loc_3);
+        setContentView(R.layout.activity_events_loc);
 
         timeHelper = new TimeHelper(this);
         jsonHelper = new JsonHelper(this);
@@ -102,6 +98,31 @@ public class EventsLocActivity extends AppCompatActivity {
     }
 
     /**
+     * The following two functions make sure that if there is a pop-up window open,
+     * this remains open when the screen is turned.
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("popUp", popUpOpen);
+        outState.putSerializable("popUpEvent", popUpEvent);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // shown event in a pop-up if pop-up was open
+        popUpOpen = savedInstanceState.getBoolean("popUp");
+
+        if (popUpOpen) {
+            popUpEvent = (Event) savedInstanceState.getSerializable("popUpEvent");
+            AlertDialog dialog = popUp(popUpEvent);
+            dialog.show();
+        }
+    }
+
+    /**
      * This functions opens the pop-up window if a user clicks on a location.
      */
     public void showAct(View v) {
@@ -114,8 +135,9 @@ public class EventsLocActivity extends AppCompatActivity {
             } else {
 
                 // show a pop-up with the current or upcoming event
-                Event event = findCurrentEvent(v);
-                AlertDialog dialog = popUp(v, event);
+                popUpEvent = findCurrentEvent(v);
+                popUpOpen = true;
+                AlertDialog dialog = popUp(popUpEvent);
                 dialog.show();
             }
         }
@@ -124,7 +146,7 @@ public class EventsLocActivity extends AppCompatActivity {
     /**
      * This function fills the layout of the pop-up.
      */
-    public AlertDialog popUp(View v, final Event e) {
+    public AlertDialog popUp(final Event e) {
 
         // create a new pop-up and set the right layout
         AlertDialog.Builder popUpBuilder = new AlertDialog.Builder(this);
@@ -146,11 +168,12 @@ public class EventsLocActivity extends AppCompatActivity {
         // Set the dialog properties
         popUpBuilder.setTitle(e.getLocation())
                 .setView(popUpWindow)
-                .setPositiveButton("Meer info", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Info", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
                         // close dialog and go to event
+                        popUpOpen = false;
                         dialog.dismiss();
                         Intent intent = new Intent(getApplicationContext(), EventActivity.class);
                         intent.putExtra("clicked_event", e);
@@ -160,21 +183,21 @@ public class EventsLocActivity extends AppCompatActivity {
                 .setNegativeButton("Sluit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        Log.d("Negative", "onClick: ");
 
                         // close dialog and restore map
+                        popUpOpen = false;
                         dialog.dismiss();
-                        // change other icons to full color
                         for (int i = 0; i < icons_id_view.length; i++){
                                 icons_id_view[i].setImageDrawable(images_id_full[i]);
                         }
                     }
                 })
-                .setNeutralButton("Volledig programma", new DialogInterface.OnClickListener() {
+                .setNeutralButton("Programma", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
                         // close dialog and start intent to full program
+                        popUpOpen = false;
                         dialog.dismiss();
                         Intent intent = new Intent(getApplicationContext(), ProgrActivity.class);
                         startActivity(intent);
@@ -199,6 +222,7 @@ public class EventsLocActivity extends AppCompatActivity {
         int count_to_start = 0;
 
         // get the right json file with events
+        // find json zet gwn apart!!!
         ArrayList<Event> events = jsonHelper.parseJSONToEvent(jsonHelper.loadJSONFromAsset(findRightJSON(v)));
         int numberOfEvents = events.size();
 
@@ -239,6 +263,7 @@ public class EventsLocActivity extends AppCompatActivity {
 
         // if there are events, but no event is taking place than the following scenarios are possible
         Event currentEvent;
+
         // 1. all events are done
         if (count_done == numberOfEvents) {
             currentEvent = new Event("Geen activiteiten meer", "Morgen weer!",
@@ -257,10 +282,11 @@ public class EventsLocActivity extends AppCompatActivity {
     }
 
     /**
-     * This function asks for the right current day and than finds and returns the right JSON file.
+     * This function asks for the right current day and than finds and returns the right
+     * JSON file id.
      */
     public int findRightJSON(View v){
-        int jsonFile;
+        int jsonFileId = 0;
 
         // save the name of the clicked location
         String location = v.getTag().toString();
@@ -283,23 +309,32 @@ public class EventsLocActivity extends AppCompatActivity {
         }
         // deze kan eruit na testen!!!!
         else if (today.before(friday)) {
-            // jsonFile = R.raw.no_event; MAAR NU VOOR TESTEN:
             day = "sat";
         }
 
         // find the right JSON file when the date is known
         try {
-            jsonFile = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:" +
+            jsonFileId = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:" +
                     "raw/events_" + day + "_" + location, null, null);
         } catch (Exception e) {
-            // IOException e
-            jsonFile = R.raw.no_event;
+
+            // show the user that something went wrong
+            Toast.makeText(this, "Er is iets mis gegaan bij het inladen van de data." +
+                    "Probeer het later nog een keer.", Toast.LENGTH_SHORT).show();
         }
 
-        return jsonFile;
+        // check if the JSON file exists, if not change it to the default
+        if (jsonFileId == 0) {
+            jsonFileId = R.raw.no_event;
+        }
+
+        return jsonFileId;
     }
 
-    // create menu
+    /**
+     * The two functions bellow create the menu and send the user to the right page when they
+     * select an option.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -309,18 +344,35 @@ public class EventsLocActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        // check which item is selected and go to the right activity --> SWITCH Gebruiken EN BREAKEN
+        // check which item is selected and go to the right activity
         Intent intent;
         switch (item.getItemId()){
-            case R.id.home: intent = new Intent(this, MainActivity.class);
-            case R.id.eventsLoc: intent = new Intent(this, EventsLocActivity.class);
-            case R.id.weather: intent = new Intent(this, WeatherActivity.class);
-            case R.id.news: intent = new Intent(this, NewsActivity.class);
-            case R.id.activities: intent = new Intent(this, EventsActivity.class);
-            case R.id.program: intent = new Intent(this, ProgrActivity.class);
-            case R.id.map:intent = new Intent(this, MapActivity.class);
-            case R.id.idea:intent = new Intent(this, IdeaActivity.class);
-            default: intent = new Intent(this, MainActivity.class);
+            case R.id.home:
+                intent = new Intent(this, MainActivity.class);
+                break;
+            case R.id.eventsLoc:
+                intent = new Intent(this, EventsLocActivity.class);
+                break;
+            case R.id.weather:
+                intent = new Intent(this, WeatherActivity.class);
+                break;
+            case R.id.news:
+                intent = new Intent(this, NewsActivity.class);
+                break;
+            case R.id.activities:
+                intent = new Intent(this, EventsActivity.class);
+                break;
+            case R.id.program:
+                intent = new Intent(this, ProgrActivity.class);
+                break;
+            case R.id.map:
+                intent = new Intent(this, MapActivity.class);
+                break;
+            case R.id.idea:
+                intent = new Intent(this, IdeaActivity.class);
+                break;
+            default:
+                intent = new Intent(this, MainActivity.class);
         }
         startActivity(intent);
         return super.onOptionsItemSelected(item);

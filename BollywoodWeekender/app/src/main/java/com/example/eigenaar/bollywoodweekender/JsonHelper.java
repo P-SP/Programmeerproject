@@ -7,7 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -31,11 +30,11 @@ public class JsonHelper {
      * The code comes from: https://stackoverflow.com/questions/19945411/
      * android-java-how-can-i-parse-a-local-json-file-from-assets-folder-into-a-listvi
      */
-    public String loadJSONFromAsset(int json_file) {
-        String json = null;
+    public String loadJSONFromAsset(int jsonFileId) {
+        String jsonFile = null;
 
         try {
-            InputStream input = context.getResources().openRawResource(json_file);
+            InputStream input = context.getResources().openRawResource(jsonFileId);
             int size = input.available();
 
             // read data up to size bytes of data from the input stream into an array of bytes
@@ -44,15 +43,18 @@ public class JsonHelper {
             input.close();
 
             // save the data as string
-            json = new String(buffer, "UTF-8");
-        } catch (IOException exception) {
+            jsonFile = new String(buffer, "UTF-8");
+            return jsonFile;
+
+        } catch (Exception e) {
 
             // show the user that something went wrong
             Toast.makeText(context, "Er is iets mis gegaan bij het inladen van de data." +
                     "Probeer het later nog een keer.", Toast.LENGTH_SHORT).show();
         }
 
-        return json;
+
+        return jsonFile;
     }
 
     /**
@@ -62,10 +64,11 @@ public class JsonHelper {
         ArrayList<Event> events = new ArrayList<>();
 
         try {
+
             // save the data in the string as JSONArray
             JSONArray array = new JSONArray(eventsJSON);
 
-            // convert each JSONobject to a Event object and add it to the ArrayList
+            // convert each JSONObject to a Event object and add it to the ArrayList
             for (int i = 0; i < array.length(); i++) {
                 JSONObject jo_inside = array.getJSONObject(i);
 
