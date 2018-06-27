@@ -91,3 +91,10 @@ Er zat een fout in het berekenen van de tijden, maar dat is opgelost. Verder heb
 
 ## Dag 19 (maandag 25-6-2018)
 Code is nu netjes. Alleen menu wordt nog in elke activiteit gemaakt. Verder werkt switch in menu niet. Rest werkt en is goed. Morgen alle layout punten afhandelen.
+
+## Dag 20
+Layout is netjes en kan gedraaid worden. Pop up window heeft knoppen naast elkaar. Review is gedaan door Pelle. Paar opmerkingen die ik nog moet verwerken. Wat nog gedaan moet worden:
+
+- code review commentaar verwerken
+- laatste check variabelen namen
+- onBackPress bij elke pagina maken en menu goed inladen
