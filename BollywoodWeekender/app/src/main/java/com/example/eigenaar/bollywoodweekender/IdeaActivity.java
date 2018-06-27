@@ -28,7 +28,7 @@ public class IdeaActivity extends AppCompatActivity {
 
         // get idea
         final EditText idea = findViewById(R.id.new_idea);
-        String new_idea = idea.getText().toString();
+        String newIdea = idea.getText().toString();
 
         // code from https://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my
         // -android-application
@@ -36,7 +36,7 @@ public class IdeaActivity extends AppCompatActivity {
         i.setType("message/rfc822");
         i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"uvastudent2015@gmail.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, "Idee volgende editie");
-        i.putExtra(Intent.EXTRA_TEXT   , new_idea);
+        i.putExtra(Intent.EXTRA_TEXT   , newIdea);
 
         try {
 
@@ -54,7 +54,10 @@ public class IdeaActivity extends AppCompatActivity {
         }
     }
 
-    // create menu
+    /**
+     * The two functions bellow create the menu and send the user to the right page when they
+     * select an option.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -63,46 +66,46 @@ public class IdeaActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()== R.id.home){
-            // go to next activity
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+
+        // check which item is selected and go to the right activity
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.home:
+                intent = new Intent(this, MainActivity.class);
+                break;
+            case R.id.eventsLoc:
+                intent = new Intent(this, EventsLocActivity.class);
+                break;
+            case R.id.weather:
+                intent = new Intent(this, WeatherActivity.class);
+                break;
+            case R.id.news:
+                intent = new Intent(this, NewsActivity.class);
+                break;
+            case R.id.activities:
+                intent = new Intent(this, EventsActivity.class);
+                break;
+            case R.id.program:
+                intent = new Intent(this, ProgrActivity.class);
+                break;
+            case R.id.map:
+                intent = new Intent(this, MapActivity.class);
+                break;
+            case R.id.idea:
+                intent = new Intent(this, IdeaActivity.class);
+                break;
+            default:
+                intent = new Intent(this, MainActivity.class);
         }
-        if(item.getItemId()== R.id.eventsLoc){
-            // go to next activity
-            Intent intent = new Intent(this, EventsLocActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.weather){
-            // go to next activity
-            Intent intent = new Intent(this, WeatherActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.news){
-            // go to next activity
-            Intent intent = new Intent(this, NewsActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.activities){
-            // go to next activity
-            Intent intent = new Intent(this, EventsActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.program){
-            // go to next activity
-            Intent intent = new Intent(this, ProgrActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.map){
-            // go to next activity
-            Intent intent = new Intent(this, MapActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.idea){
-            // go to next activity
-            Intent intent = new Intent(this, IdeaActivity.class);
-            startActivity(intent);
-        }
+        startActivity(intent);
+        finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

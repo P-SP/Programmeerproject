@@ -26,7 +26,7 @@ public class WeatherRequest implements Response.Listener<JSONObject>, Response.E
     private Callback callbackActivity;
 
     public interface Callback {
-        void gotWeather(ArrayList<String> today, ArrayList<String> tomorrow, ArrayList<String> day_after);
+        void gotWeather(ArrayList<String> today, ArrayList<String> tomorrow, ArrayList<String> dayAfter);
         void gotWeatherError(String message);
     }
 
@@ -66,7 +66,7 @@ public class WeatherRequest implements Response.Listener<JSONObject>, Response.E
         String[] today = new String[] {
                 "temp", "gtemp", "verw", "d0weer", "d0tmax", "d0tmin", "d0neerslag" };
         String[] tomorrow = new String[] {"d1weer", "d1tmax", "d1tmin", "d1neerslag"};
-        String[] day_after_tomorrow = new String[] {"d2weer", "d2tmax", "d2tmin", "d2neerslag"};
+        String[] dayAfterTomorrow = new String[] {"d2weer", "d2tmax", "d2tmin", "d2neerslag"};
 
         // extract the JSONArray from the JSONObject that contains the information
         try {
@@ -95,9 +95,9 @@ public class WeatherRequest implements Response.Listener<JSONObject>, Response.E
         }
 
         // load weather day after tomorrow
-        for (int i = 0; i < day_after_tomorrow.length; i++) {
+        for (int i = 0; i < dayAfterTomorrow.length; i++) {
             try{
-                weatherDayAfterTom.add(liveWeatherObject.getString(day_after_tomorrow[i]));
+                weatherDayAfterTom.add(liveWeatherObject.getString(dayAfterTomorrow[i]));
             } catch (JSONException e) {
                 callbackActivity.gotWeatherError(e.getMessage());
             }

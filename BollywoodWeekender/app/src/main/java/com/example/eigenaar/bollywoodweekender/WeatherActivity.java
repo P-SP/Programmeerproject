@@ -39,28 +39,30 @@ public class WeatherActivity extends AppCompatActivity  implements WeatherReques
         apiRequest.getWeather(this);
     }
 
+    /**
+     * This function fills the layout with the right content, when the data is obtained from
+     * the API.
+     */
     @Override
-    public void gotWeather(ArrayList<String> today, ArrayList<String> tomorrow, ArrayList<String> day_after) {
-
-        // get places and set right value
+    public void gotWeather(ArrayList<String> today, ArrayList<String> tomorrow, ArrayList<String> dayAfter) {
 
         // today
-        TextView temp_now = findViewById(R.id.temp_now);
-        temp_now.setText(today.get(0));
+        TextView tempNow = findViewById(R.id.temp_now);
+        tempNow.setText(today.get(0));
 
-        TextView temp_feel = findViewById(R.id.temp_feel);
-        temp_feel.setText(today.get(1));
+        TextView tempFeel = findViewById(R.id.temp_feel);
+        tempFeel.setText(today.get(1));
 
-        ImageView image_today = findViewById(R.id.image_today);
+        ImageView imageToday = findViewById(R.id.image_today);
         int id = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:" +
                 "drawable/" + today.get(3), null, null);
-        image_today.setImageResource(id);
+        imageToday.setImageResource(id);
 
-        TextView temp_max = findViewById(R.id.max_today);
-        temp_max.setText(today.get(4));
+        TextView tempMax = findViewById(R.id.max_today);
+        tempMax.setText(today.get(4));
 
-        TextView temp_min = findViewById(R.id.min_today);
-        temp_min.setText(today.get(5));
+        TextView tempMin = findViewById(R.id.min_today);
+        tempMin.setText(today.get(5));
 
         TextView rain = findViewById(R.id.rain_today);
         rain.setText(today.get(6));
@@ -69,34 +71,34 @@ public class WeatherActivity extends AppCompatActivity  implements WeatherReques
         expectation.setText(today.get(2));
 
         // tomorrow
-        ImageView image_tom = findViewById(R.id.image_tomorrow);
-        int id_tom = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:" +
+        ImageView imageTom = findViewById(R.id.image_tomorrow);
+        int idTom = getResources().getIdentifier("com.example.eigenaar.bollywoodweekender:" +
                 "drawable/" + tomorrow.get(0), null, null);
-        image_tom.setImageResource(id_tom);
+        imageTom.setImageResource(idTom);
 
-        TextView max_tom = findViewById(R.id.max_tomorrow);
-        max_tom.setText(tomorrow.get(1));
+        TextView maxTom = findViewById(R.id.max_tomorrow);
+        maxTom.setText(tomorrow.get(1));
 
-        TextView min_tom = findViewById(R.id.min_tomorrow);
-        min_tom.setText(tomorrow.get(2));
+        TextView minTom = findViewById(R.id.min_tomorrow);
+        minTom.setText(tomorrow.get(2));
 
-        TextView rain_tom = findViewById(R.id.rain_tomorrow);
-        rain_tom.setText(tomorrow.get(3));
+        TextView rainTom = findViewById(R.id.rain_tomorrow);
+        rainTom.setText(tomorrow.get(3));
 
         // day after tomorrow
-        ImageView image_day_after = findViewById(R.id.image_day_after);
-        int id_day_after = getResources().getIdentifier("com.example.eigenaar." +
-                "bollywoodweekender:drawable/" + day_after.get(0), null, null);
-        image_day_after.setImageResource(id_day_after);
+        ImageView imageDayAfter = findViewById(R.id.image_day_after);
+        int idDayAfter = getResources().getIdentifier("com.example.eigenaar." +
+                "bollywoodweekender:drawable/" + dayAfter.get(0), null, null);
+        imageDayAfter.setImageResource(idDayAfter);
 
-        TextView max_day_after = findViewById(R.id.max_day_after);
-        max_day_after.setText(day_after.get(1));
+        TextView maxDayAfter = findViewById(R.id.max_day_after);
+        maxDayAfter.setText(dayAfter.get(1));
 
-        TextView min_day_after = findViewById(R.id.min_day_after);
-        min_day_after.setText(day_after.get(2));
+        TextView minDayAfter = findViewById(R.id.min_day_after);
+        minDayAfter.setText(dayAfter.get(2));
 
-        TextView rain_day_after = findViewById(R.id.rain_day_after);
-        rain_day_after.setText(day_after.get(3));
+        TextView rainDayAfter = findViewById(R.id.rain_day_after);
+        rainDayAfter.setText(dayAfter.get(3));
     }
 
     @Override
@@ -105,7 +107,10 @@ public class WeatherActivity extends AppCompatActivity  implements WeatherReques
                 message, Toast.LENGTH_SHORT).show();
     }
 
-    // create menu
+    /**
+     * The two functions bellow create the menu and send the user to the right page when they
+     * select an option.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -114,47 +119,47 @@ public class WeatherActivity extends AppCompatActivity  implements WeatherReques
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()== R.id.home){
-            // go to next activity
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+
+        // check which item is selected and go to the right activity
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.home:
+                intent = new Intent(this, MainActivity.class);
+                break;
+            case R.id.eventsLoc:
+                intent = new Intent(this, EventsLocActivity.class);
+                break;
+            case R.id.weather:
+                intent = new Intent(this, WeatherActivity.class);
+                break;
+            case R.id.news:
+                intent = new Intent(this, NewsActivity.class);
+                break;
+            case R.id.activities:
+                intent = new Intent(this, EventsActivity.class);
+                break;
+            case R.id.program:
+                intent = new Intent(this, ProgrActivity.class);
+                break;
+            case R.id.map:
+                intent = new Intent(this, MapActivity.class);
+                break;
+            case R.id.idea:
+                intent = new Intent(this, IdeaActivity.class);
+                break;
+            default:
+                intent = new Intent(this, MainActivity.class);
         }
-        if(item.getItemId()== R.id.eventsLoc){
-            // go to next activity
-            Intent intent = new Intent(this, EventsLocActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.weather){
-            // go to next activity
-            Intent intent = new Intent(this, WeatherActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.news){
-            // go to next activity
-            Intent intent = new Intent(this, NewsActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.activities){
-            // go to next activity
-            Intent intent = new Intent(this, EventsActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.program){
-            // go to next activity
-            Intent intent = new Intent(this, ProgrActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.map){
-            // go to next activity
-            Intent intent = new Intent(this, MapActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.idea){
-            // go to next activity
-            Intent intent = new Intent(this, IdeaActivity.class);
-            startActivity(intent);
-        }
+        startActivity(intent);
+        finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

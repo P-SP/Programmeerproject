@@ -44,7 +44,10 @@ public class EventActivity extends AppCompatActivity {
         info.setText(retrievedEvent.getInfo());
     }
 
-    // create menu
+    /**
+     * The two functions bellow create the menu and send the user to the right page when they
+     * select an option.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -55,38 +58,36 @@ public class EventActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         // check which item is selected and go to the right activity
-        if(item.getItemId()== R.id.home){
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.home:
+                intent = new Intent(this, MainActivity.class);
+                break;
+            case R.id.eventsLoc:
+                intent = new Intent(this, EventsLocActivity.class);
+                break;
+            case R.id.weather:
+                intent = new Intent(this, WeatherActivity.class);
+                break;
+            case R.id.news:
+                intent = new Intent(this, NewsActivity.class);
+                break;
+            case R.id.activities:
+                intent = new Intent(this, EventsActivity.class);
+                break;
+            case R.id.program:
+                intent = new Intent(this, ProgrActivity.class);
+                break;
+            case R.id.map:
+                intent = new Intent(this, MapActivity.class);
+                break;
+            case R.id.idea:
+                intent = new Intent(this, IdeaActivity.class);
+                break;
+            default:
+                intent = new Intent(this, MainActivity.class);
         }
-        if(item.getItemId()== R.id.eventsLoc){
-            Intent intent = new Intent(this, EventsLocActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.weather){
-            Intent intent = new Intent(this, WeatherActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.news){
-            Intent intent = new Intent(this, NewsActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.activities){
-            Intent intent = new Intent(this, EventsActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.program){
-            Intent intent = new Intent(this, ProgrActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.map){
-            Intent intent = new Intent(this, MapActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.idea){
-            Intent intent = new Intent(this, IdeaActivity.class);
-            startActivity(intent);
-        }
+        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
 }

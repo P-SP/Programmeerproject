@@ -70,15 +70,15 @@ public class JsonHelper {
 
             // convert each JSONObject to a Event object and add it to the ArrayList
             for (int i = 0; i < array.length(); i++) {
-                JSONObject jo_inside = array.getJSONObject(i);
+                JSONObject joInside = array.getJSONObject(i);
 
                 // get the properties from the JSONobject
-                String name = jo_inside.getString("name");
-                String day = jo_inside.getString("day");
-                String time = jo_inside.getString("time");
-                String location = jo_inside.getString("location");
-                String info = jo_inside.getString("info");
-                String image = jo_inside.getString("image_name");
+                String name = joInside.getString("name");
+                String day = joInside.getString("day");
+                String time = joInside.getString("time");
+                String location = joInside.getString("location");
+                String info = joInside.getString("info");
+                String image = joInside.getString("image_name");
 
                 // make a new event and add it to the ArrayList
                 Event event = new Event(name, day, time, location, info, context.getResources()

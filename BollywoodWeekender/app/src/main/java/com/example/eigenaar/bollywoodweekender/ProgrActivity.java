@@ -13,6 +13,8 @@ import android.widget.Spinner;
 
 import com.github.chrisbanes.photoview.PhotoView;
 
+import static java.lang.Boolean.FALSE;
+
 /**
  * This activity enables the user to see the program of a selected day. The program is shown as
  * pictures with all the locations and times for the selected day. The user can select the day.
@@ -22,6 +24,7 @@ import com.github.chrisbanes.photoview.PhotoView;
  */
 
 public class ProgrActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    Boolean fromEventsLoc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class ProgrActivity extends AppCompatActivity implements AdapterView.OnIt
         setContentView(R.layout.activity_progr);
 
         // find the dropdown
-        Spinner day_spinner = (Spinner) findViewById(R.id.spinner_day_progr);
+        Spinner daySpinner = (Spinner) findViewById(R.id.spinner_day_progr);
 
         // instantiate the adapter for dropdown
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -37,14 +40,19 @@ public class ProgrActivity extends AppCompatActivity implements AdapterView.OnIt
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // apply the adapter to the dropdown and start listening
-        day_spinner.setAdapter(adapter);
-        day_spinner.setOnItemSelectedListener(this);
+        daySpinner.setAdapter(adapter);
+        daySpinner.setOnItemSelectedListener(this);
+
+        // get event from previous activity
+        Intent intent = getIntent();
+        fromEventsLoc = intent.getBooleanExtra("fromEventsLoc", FALSE);
     }
 
     /**
      * This function makes sure the right JSON file is loaded, when a user picks a day.
      */
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
         // get places
         PhotoView photoView1 = (PhotoView) findViewById(R.id.progr1);
         PhotoView photoView2 = (PhotoView) findViewById(R.id.progr2);
@@ -74,10 +82,14 @@ public class ProgrActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
+
         // if nothing is selected, then the events for friday are shown
     }
 
-    // create menu
+    /**
+     * The two functions bellow create the menu and send the user to the right page when they
+     * select an option.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -86,46 +98,53 @@ public class ProgrActivity extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()== R.id.home){
-            // go to next activity
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+
+        // check which item is selected and go to the right activity
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.home:
+                intent = new Intent(this, MainActivity.class);
+                break;
+            case R.id.eventsLoc:
+                intent = new Intent(this, EventsLocActivity.class);
+                break;
+            case R.id.weather:
+                intent = new Intent(this, WeatherActivity.class);
+                break;
+            case R.id.news:
+                intent = new Intent(this, NewsActivity.class);
+                break;
+            case R.id.activities:
+                intent = new Intent(this, EventsActivity.class);
+                break;
+            case R.id.program:
+                intent = new Intent(this, ProgrActivity.class);
+                break;
+            case R.id.map:
+                intent = new Intent(this, MapActivity.class);
+                break;
+            case R.id.idea:
+                intent = new Intent(this, IdeaActivity.class);
+                break;
+            default:
+                intent = new Intent(this, MainActivity.class);
         }
-        if(item.getItemId()== R.id.eventsLoc){
-            // go to next activity
-            Intent intent = new Intent(this, EventsLocActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.weather){
-            // go to next activity
-            Intent intent = new Intent(this, WeatherActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.news){
-            // go to next activity
-            Intent intent = new Intent(this, NewsActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.activities){
-            // go to next activity
-            Intent intent = new Intent(this, EventsActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.program){
-            // go to next activity
-            Intent intent = new Intent(this, ProgrActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.map){
-            // go to next activity
-            Intent intent = new Intent(this, MapActivity.class);
-            startActivity(intent);
-        }
-        if(item.getItemId()== R.id.idea){
-            // go to next activity
-            Intent intent = new Intent(this, IdeaActivity.class);
-            startActivity(intent);
-        }
+        startActivity(intent);
+        finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent;
+
+        if (fromEventsLoc) {
+            intent = new Intent(this, EventsLocActivity.class);
+        } else {
+            intent = new Intent(this, MainActivity.class);
+        }
+
+        startActivity(intent);
+        finish();
     }
 }

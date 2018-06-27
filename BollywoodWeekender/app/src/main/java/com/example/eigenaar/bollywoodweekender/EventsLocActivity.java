@@ -16,6 +16,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 /**
  * This activity shows an interactive map with event locations. When a user clicks on an event
  * location, a pop-up window shows the current or next event (per day).
@@ -26,8 +29,10 @@ import java.util.Date;
 
 public class EventsLocActivity extends AppCompatActivity {
 
-    // helpers for handeling time and json functions
+    // the TimeHelper handles getting the right times
     TimeHelper timeHelper;
+
+    // the JsonHelper handles loading in the data
     JsonHelper jsonHelper;
 
     // this is used to maintain pop-up on turning
@@ -35,9 +40,9 @@ public class EventsLocActivity extends AppCompatActivity {
     Boolean popUpOpen = false;
 
     // lists with id's of images and ImageViews
-    ImageView[] icons_id_view;
-    Drawable[] images_id_gray;
-    Drawable[] images_id_full;
+    ImageView[] iconsIdView;
+    Drawable[] imagesIdGray;
+    Drawable[] imagesIdFull;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +52,8 @@ public class EventsLocActivity extends AppCompatActivity {
         timeHelper = new TimeHelper(this);
         jsonHelper = new JsonHelper(this);
 
-        // fill lists with id's
-        icons_id_view = new ImageView[]{
+        // fill lists with id's of ImageViews
+        iconsIdView = new ImageView[]{
                 findViewById(R.id.bios),
                 findViewById(R.id.bowling),
                 findViewById(R.id.casino),
@@ -64,7 +69,8 @@ public class EventsLocActivity extends AppCompatActivity {
                 findViewById(R.id.terrace)
         };
 
-        images_id_gray = new Drawable[]{
+        // fill lists with id's of gray pictures
+        imagesIdGray = new Drawable[]{
                 getResources().getDrawable(R.drawable.bios_icon_gray),
                 getResources().getDrawable(R.drawable.bowling_gray),
                 getResources().getDrawable(R.drawable.casino_icon_gray),
@@ -80,7 +86,8 @@ public class EventsLocActivity extends AppCompatActivity {
                 getResources().getDrawable(R.drawable.terrace_icon_gray)
         };
 
-        images_id_full = new Drawable[]{
+        // fill lists with id's of colored pictures
+        imagesIdFull = new Drawable[]{
                 getResources().getDrawable(R.drawable.bios_icon),
                 getResources().getDrawable(R.drawable.bowling_icon),
                 getResources().getDrawable(R.drawable.casino_icon),
@@ -127,11 +134,11 @@ public class EventsLocActivity extends AppCompatActivity {
      */
     public void showAct(View v) {
 
-        for (int i = 0; i < icons_id_view.length; i++){
-            if(icons_id_view[i] != v){
+        for (int i = 0; i < iconsIdView.length; i++){
+            if(iconsIdView[i] != v){
 
                 // change other icons to gray
-                icons_id_view[i].setImageDrawable(images_id_gray[i]);
+                iconsIdView[i].setImageDrawable(imagesIdGray[i]);
             } else {
 
                 // show a pop-up with the current or upcoming event
@@ -172,6 +179,11 @@ public class EventsLocActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
+                        // restore map
+                        for (int i = 0; i < iconsIdView.length; i++){
+                            iconsIdView[i].setImageDrawable(imagesIdFull[i]);
+                        }
+
                         // close dialog and go to event
                         popUpOpen = false;
                         dialog.dismiss();
@@ -187,8 +199,8 @@ public class EventsLocActivity extends AppCompatActivity {
                         // close dialog and restore map
                         popUpOpen = false;
                         dialog.dismiss();
-                        for (int i = 0; i < icons_id_view.length; i++){
-                                icons_id_view[i].setImageDrawable(images_id_full[i]);
+                        for (int i = 0; i < iconsIdView.length; i++){
+                                iconsIdView[i].setImageDrawable(imagesIdFull[i]);
                         }
                     }
                 })
@@ -196,10 +208,16 @@ public class EventsLocActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
+                        // restore map
+                        for (int i = 0; i < iconsIdView.length; i++){
+                            iconsIdView[i].setImageDrawable(imagesIdFull[i]);
+                        }
+
                         // close dialog and start intent to full program
                         popUpOpen = false;
                         dialog.dismiss();
                         Intent intent = new Intent(getApplicationContext(), ProgrActivity.class);
+                        intent.putExtra("fromEventsLoc", TRUE);
                         startActivity(intent);
                         finish();
                     }
@@ -215,15 +233,15 @@ public class EventsLocActivity extends AppCompatActivity {
     public Event findCurrentEvent(View v) {
 
         // get current time
-        Date time_now = timeHelper.getCurrentTime();
+        Date timeNow = timeHelper.getCurrentTime();
 
         // make counters
-        int count_done = 0;
-        int count_to_start = 0;
+        int countDone = 0;
+        int countStart = 0;
 
         // get the right json file with events
-        // find json zet gwn apart!!!
-        ArrayList<Event> events = jsonHelper.parseJSONToEvent(jsonHelper.loadJSONFromAsset(findRightJSON(v)));
+        int jsonId = findRightJSON(v);
+        ArrayList<Event> events = jsonHelper.parseJSONToEvent(jsonHelper.loadJSONFromAsset(jsonId));
         int numberOfEvents = events.size();
 
         // get first event
@@ -242,22 +260,22 @@ public class EventsLocActivity extends AppCompatActivity {
 
             // get start and end time of the event
             Date[] times = timeHelper.getEventTimes(e);
-            Date start_time = times[0];
-            Date end_time = times[1];
+            Date starTime = times[0];
+            Date endTime = times[1];
 
             // check if selected event is happening at the moment
-            if (time_now.after(start_time) && time_now.before(end_time)) {
+            if (timeNow.after(starTime) && timeNow.before(endTime)) {
 
                 // return this immediately, no other events have to be checked
                 return e;
             }
             // check if event is done
-            if (time_now.after(end_time)) {
-                count_done = count_done + 1;
+            if (timeNow.after(endTime)) {
+                countDone = countDone + 1;
             }
             // check if event still has to start
             else {
-                count_to_start = count_to_start + 1;
+                countStart = countStart + 1;
             }
         }
 
@@ -265,18 +283,18 @@ public class EventsLocActivity extends AppCompatActivity {
         Event currentEvent;
 
         // 1. all events are done
-        if (count_done == numberOfEvents) {
+        if (countDone == numberOfEvents) {
             currentEvent = new Event("Geen activiteiten meer", "Morgen weer!",
-                    "", "Huide locatie", "Vandaag zijn er geen speciale " +
-                    "activiteiten meer gepland", R.drawable.logo);
+                    "", firstEvent.getLocation(), "Vandaag zijn er geen speciale " +
+                    "activiteiten meer gepland.", R.drawable.logo);
         }
         // 2. all events still have to start
-        else if (count_to_start == numberOfEvents) {
+        else if (countStart == numberOfEvents) {
             currentEvent = firstEvent;
         }
-        // 3. there is a gab between the starting and end time of the events
+        // 3. there is a gap between the starting and end time of the events
         else {
-            currentEvent = (Event) events.get(count_done);
+            currentEvent = (Event) events.get(countDone);
         }
         return currentEvent;
     }
@@ -375,6 +393,14 @@ public class EventsLocActivity extends AppCompatActivity {
                 intent = new Intent(this, MainActivity.class);
         }
         startActivity(intent);
+        finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

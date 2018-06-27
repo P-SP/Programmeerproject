@@ -55,7 +55,7 @@ public class TimeHelper {
      * able to compare it with the times of the events.
      */
     public Date getCurrentTime() {
-        Date time_now;
+        Date timeNow;
 
         // define the right formats
         SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
@@ -68,12 +68,12 @@ public class TimeHelper {
 
         // take year, month and date the same, because only the time maters
         if (hour < 4) {
-            time_now = new Date(2018, 5,6, hour, min);
+            timeNow = new Date(2018, 5,6, hour, min);
         } else {
-            time_now = new Date(2018, 5,5, hour, min);
+            timeNow = new Date(2018, 5,5, hour, min);
         }
 
-        return time_now;
+        return timeNow;
     }
 
     /**
@@ -81,7 +81,7 @@ public class TimeHelper {
      * fixed in order to be able to compare it with the current time.
      */
     public Date[] getEventTimes(Event e) {
-        Date start_time, end_time;
+        Date startTime, endTime;
 
         // extract the times from the string in the event object
         StringTokenizer time = new StringTokenizer(e.getTime(), "-");
@@ -104,21 +104,21 @@ public class TimeHelper {
 
         // take year, month and date the same, because only the time maters
         if (hourStart < 4) {
-            start_time = new Date(2018, 5, 6, hourStart, minStart);
+            startTime = new Date(2018, 5, 6, hourStart, minStart);
         } else {
-            start_time = new Date(2018, 5, 5, hourStart, minStart);
+            startTime = new Date(2018, 5, 5, hourStart, minStart);
         }
 
         // take year, month and date the same, because only the time maters
         if (hourEnd < 4) {
-            end_time = new Date(2018, 5, 6, hourEnd, minEnd);
+            endTime = new Date(2018, 5, 6, hourEnd, minEnd);
         } else {
-            end_time = new Date(2018, 5, 5, hourEnd, minEnd);
+            endTime = new Date(2018, 5, 5, hourEnd, minEnd);
         }
 
         Date[] times = new Date[] {
-                start_time,
-                end_time
+                startTime,
+                endTime
         };
 
         return times;
