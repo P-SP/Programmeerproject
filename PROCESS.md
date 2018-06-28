@@ -98,3 +98,15 @@ Layout is netjes en kan gedraaid worden. Pop up window heeft knoppen naast elkaa
 - code review commentaar verwerken
 - laatste check variabelen namen
 - onBackPress bij elke pagina maken en menu goed inladen
+
+## Dag 21
+Gedaan:
+- code review commentaar verwerken
+- laatste check variabelen namen
+- onBackPress bij elke pagina maken en menu goed inladen
+- activiteiten gefinished
+- extra informatie toegevoegd bij activiteiten
+- logo van app en app naam veranderd
+- readme en final report in orde gemaakt
+
+Morgen moet alleen nog het filmpje gemaakt worden.
