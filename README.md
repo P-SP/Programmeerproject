@@ -6,9 +6,9 @@ Programmeerproject | Puja Chandrikasingh | 11059842
 ### Screen shots
 Hieronder zie je enkele screen shots van de app. Het eerste scherm bevat een simple home screen. Via het menu in de rechterbovenhoek kunnen verschillende pagina's bereikt worden. Hieronder is de interactieve plattegrond (Events en locatie) weergeven. Ook de pup-up die verschijnt als je klikt op een locatie is weergeven. 
 
-<src="doc/AppHome.png" width="20%"> 
-<src="doc/AppEventsLoc.png" width="20%">
-<src="doc/AppEventsLocPopUp" width="20%">
+<img src="doc/AppHome.png" width="20%"> 
+<img src="doc/AppEventsLoc.png" width="20%">
+<img src="doc/AppEventsLocPopUp" width="20%">
 
 ### Data
 De gegevens kunnen gevonden worden op www.bollywoodweekender.nl.
