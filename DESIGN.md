@@ -1,6 +1,6 @@
 # Design
 ### Geavanceerde schetsen
-De schetsen zijn te vinden het [pdf documentje](Advanced_sketches.pdf). De deeldiagrammen van de modules, classes en functions zijn ook daarin te vinden.
+De schetsen zijn te vinden het [pdf documentje](doc/Advanced_sketches.pdf). De deeldiagrammen van de modules, classes en functions zijn ook daarin te vinden.
 
 ### Diagram
 ![Alternative Text](doc/Diagram.png)
