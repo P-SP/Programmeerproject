@@ -325,10 +325,6 @@ public class EventsLocActivity extends AppCompatActivity {
         } else if (today.equals(sun)) {
             day = "sun";
         }
-        // deze kan eruit na testen!!!!
-        else if (today.before(friday)) {
-            day = "sat";
-        }
 
         // find the right JSON file when the date is known
         try {

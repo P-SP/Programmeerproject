@@ -103,8 +103,8 @@ public class WeatherActivity extends AppCompatActivity  implements WeatherReques
 
     @Override
     public void gotWeatherError(String message) {
-        Toast.makeText(this, "Something went wrong: " +
-                message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Er is iets fout gegaan bij het inladen van het weer. " +
+                "Probeer het later nog een keer.", Toast.LENGTH_LONG).show();
     }
 
     /**
