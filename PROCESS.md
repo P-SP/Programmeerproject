@@ -110,3 +110,6 @@ Gedaan:
 - readme en final report in orde gemaakt
 
 Morgen moet alleen nog het filmpje gemaakt worden.
+
+## Dag 22
+Filmpje heb ik nu pas kunnen maken, vanwege extreme drukte van het evenement. Heb dus nu ook de regels code weggehaald die ervoor zorgde dat niet overal stond dat er geen event was (bij interactieve plattegrond) omdat de evenementen nog niet begonnen zijn.
